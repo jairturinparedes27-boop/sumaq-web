@@ -2,33 +2,20 @@
 /* ========================================
    SIDEBAR - CONTENEDOR PRINCIPAL
 ======================================== */
-.sidebar {
-  /* POSICIÓN FIJA */
-  position: fixed;
-  top: 0;
-  left: 0;
 
-  /* DIMENSIONES */
+.sidebar {
   width: 270px;
   min-width: 270px;
   height: 100vh;
-  height: 100dvh;
-
-  /* APARIENCIA */
   background: #44271D;
   color: #FFFFFF;
 
-  /* DISTRIBUCIÓN */
   display: flex;
   flex-direction: column;
 
   padding: 28px 18px;
-
-  /* COMPORTAMIENTO */
-  z-index: 1000;
-  overflow-y: auto;
-  overflow-x: hidden;
 }
+
 /* ========================================
    LOGOTIPO
 ======================================== */

@@ -38,15 +38,17 @@ body {
 ======================================== */
 
 .dashboard-content {
-  flex: 1 1 0;
+  flex: 1;
   min-width: 0;
   height: 100%;
+  margin-left: 270px;
+
   display: flex;
   flex-direction: column;
+
   background: #FFF8F0;
   overflow: hidden;
 }
-
 /* ========================================
    HEADER FIJO
 ======================================== */
@@ -91,6 +93,7 @@ body {
   .dashboard-content {
     width: 100%;
     min-width: 0;
+    margin-left: 0;
   }
 
   .dashboard-page {

@@ -1,8 +1,7 @@
 import { useState } from 'react'
-
 import './Sidebar.css'
 
-function Sidebar({ abierto, onCerrar }) {
+function Sidebar() {
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: '▦' },
     { id: 'mesas', label: 'Mesas', icon: '▤' },
@@ -15,49 +14,58 @@ function Sidebar({ abierto, onCerrar }) {
   ]
 
   return (
-    <>
-      {abierto && (
-        <div
-          className="sidebar-overlay"
-          onClick={onCerrar}
+    <aside className="sidebar">
+
+      {/* LOGOTIPO */}
+      <div className="sidebar-brand">
+        <img
+          src="/icons/icon-192.png"
+          alt="Logo Sumaq Ñan"
         />
-      )}
 
-      <aside className={`sidebar ${abierto ? 'sidebar-open' : ''}`}>
-
-        <div className="sidebar-brand">
-          <img src="/icons/icon-192.png" alt="Logo Sumaq Ñan" />
-
-          <div className="sidebar-brand-text">
-            <h2>SUMAQ ÑAN</h2>
-            <span>RESTAURANTE</span>
-          </div>
+        <div className="sidebar-brand-text">
+          <h2>SUMAQ ÑAN</h2>
+          <span>RESTAURANTE</span>
         </div>
+      </div>
 
-        <nav className="sidebar-navigation">
-          <span className="sidebar-section-title">
-            MENÚ PRINCIPAL
-          </span>
+      {/* MENÚ */}
+      <nav className="sidebar-navigation">
 
-          {menuItems.map((item) => (
-            <button
-              key={item.id}
-              className={`sidebar-link ${
-                item.id === 'dashboard' ? 'active' : ''
-              }`}
-              type="button"
-              onClick={onCerrar}
-            >
-              <span className="sidebar-icon">{item.icon}</span>
-              <span>{item.label}</span>
-            </button>
-          ))}
-        </nav>
+        <span className="sidebar-section-title">
+          MENÚ PRINCIPAL
+        </span>
 
-      </aside>
-    </>
+        {menuItems.map((item) => (
+          <button
+            key={item.id}
+            className={`sidebar-link ${
+              item.id === 'dashboard' ? 'active' : ''
+            }`}
+            type="button"
+          >
+            <span className="sidebar-icon">
+              {item.icon}
+            </span>
+
+            <span>{item.label}</span>
+          </button>
+        ))}
+
+      </nav>
+
+      {/* PIE DEL MENÚ */}
+      <div className="sidebar-footer">
+
+        <button className="sidebar-logout" type="button">
+          <span>↪</span>
+          Cerrar sesión
+        </button>
+
+      </div>
+
+    </aside>
   )
 }
 
 export default Sidebar
-
