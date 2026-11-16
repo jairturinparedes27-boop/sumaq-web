@@ -10,11 +10,13 @@
 }
 
 .login-page {
-  min-height: 100vh;
+  height: 100vh;
+  min-height: 650px;
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   background: #FFF8F0;
   font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
 }
 
 /* ========================================
@@ -35,7 +37,8 @@
   background-position: center;
   background-repeat: no-repeat;
 
-  min-height: 100vh;
+  height: 100%;
+  min-height: 0;
 }
 
 /* ========================================
@@ -46,8 +49,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 45px;
-  min-height: 100vh;
+  padding: 25px 45px;
+  height: 100%;
+  min-height: 0;
+  overflow-y: auto;
 }
 
 .login-form-container {
@@ -64,8 +69,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  margin-bottom: 35px;
+  gap: 8px;
+  margin-bottom: 15px;
 }
 
 .login-brand-logo img {
@@ -87,7 +92,7 @@
 ======================================== */
 
 .login-heading {
-  margin-bottom: 40px;
+  margin-bottom: 25px;
 }
 
 .login-heading h2 {
@@ -116,7 +121,7 @@
 ======================================== */
 
 .form-group {
-  margin-bottom: 25px;
+  margin-bottom: 18px;
 }
 
 .form-group label {
@@ -215,10 +220,10 @@
 ======================================== */
 
 .login-bottom {
-  margin-top: 65px;
+  margin-top: 30px;
   text-align: center;
   border-top: 1px solid #EADFD5;
-  padding-top: 25px;
+  padding-top: 15px;
 }
 
 .login-bottom span {
@@ -243,8 +248,10 @@
   .login-page {
     grid-template-columns: 1fr;
     min-height: 100vh;
+    height: auto;
+    overflow: visible;
   }
-
+  
   /* Ocultar fotografía en celulares */
   .login-brand {
     display: none;
@@ -253,6 +260,8 @@
   .login-form-section {
     padding: 35px 25px;
     min-height: 100vh;
+    height: auto;
+    overflow-y: visible;
   }
 
   .login-form-container {
