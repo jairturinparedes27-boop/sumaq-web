@@ -1,4 +1,6 @@
+
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { useState } from 'react'
 
 import Login from './pages/Login/Login'
 import Sidebar from './components/Sidebar/Sidebar'
@@ -7,24 +9,87 @@ import Header from './components/Header/Header'
 import './App.css'
 
 function Dashboard() {
+  const [menuAbierto, setMenuAbierto] = useState(false)
+
+  const estadisticas = [
+    {
+      id: 1,
+      titulo: 'Ventas del día',
+      valor: 'S/ 1,250.00',
+      detalle: 'Ingresos registrados'
+    },
+    {
+      id: 2,
+      titulo: 'Pedidos',
+      valor: '28',
+      detalle: 'Pedidos del día'
+    },
+    {
+      id: 3,
+      titulo: 'Mesas ocupadas',
+      valor: '8 / 15',
+      detalle: 'Mesas en uso'
+    },
+    {
+      id: 4,
+      titulo: 'Productos',
+      valor: '45',
+      detalle: 'Productos registrados'
+    }
+  ]
+
   return (
     <div className="dashboard-layout">
 
-    <Sidebar />
+      <Sidebar
+        abierto={menuAbierto}
+        onCerrar={() => setMenuAbierto(false)}
+      />
 
-    <main className="dashboard-content">
+      <main className="dashboard-content">
 
-      <Header />
+        <Header
+          onAbrirMenu={() => setMenuAbierto(true)}
+        />
 
-      <section className="dashboard-body">
-        <h1>Bienvenido a Sumaq Ñan</h1>
+        <div className="dashboard-page">
 
-        <p>
-          Panel principal del sistema de restaurante.
-        </p>
-      </section>
+          <div className="dashboard-welcome">
+            <h1>Resumen general</h1>
+            <p>
+              Bienvenido al panel de administración de Sumaq Ñan.
+            </p>
+          </div>
 
-    </main>
+          <section className="dashboard-stats">
+
+            {estadisticas.map((item) => (
+              <article className="stat-card" key={item.id}>
+                <span className="stat-title">{item.titulo}</span>
+                <h2>{item.valor}</h2>
+                <p>{item.detalle}</p>
+              </article>
+            ))}
+
+          </section>
+
+          <section className="dashboard-bottom">
+
+            <div className="dashboard-panel">
+              <h3>Actividad reciente</h3>
+              <p>Aquí mostraremos los últimos pedidos registrados.</p>
+            </div>
+
+            <div className="dashboard-panel">
+              <h3>Estado de mesas</h3>
+              <p>Aquí mostraremos las mesas disponibles y ocupadas.</p>
+            </div>
+
+          </section>
+
+        </div>
+
+      </main>
 
     </div>
   )
@@ -34,13 +99,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-
         <Route path="/" element={<Login />} />
-
         <Route path="/dashboard" element={<Dashboard />} />
-
         <Route path="*" element={<Navigate to="/" replace />} />
-
       </Routes>
     </BrowserRouter>
   )

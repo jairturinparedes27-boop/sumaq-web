@@ -1,7 +1,8 @@
 import { useState } from 'react'
+
 import './Sidebar.css'
 
-function Sidebar() {
+function Sidebar({ abierto, onCerrar }) {
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: '▦' },
     { id: 'mesas', label: 'Mesas', icon: '▤' },
@@ -14,58 +15,49 @@ function Sidebar() {
   ]
 
   return (
-    <aside className="sidebar">
-
-      {/* LOGOTIPO */}
-      <div className="sidebar-brand">
-        <img
-          src="/icons/icon-192.png"
-          alt="Logo Sumaq Ñan"
+    <>
+      {abierto && (
+        <div
+          className="sidebar-overlay"
+          onClick={onCerrar}
         />
+      )}
 
-        <div className="sidebar-brand-text">
-          <h2>SUMAQ ÑAN</h2>
-          <span>RESTAURANTE</span>
+      <aside className={`sidebar ${abierto ? 'sidebar-open' : ''}`}>
+
+        <div className="sidebar-brand">
+          <img src="/icons/icon-192.png" alt="Logo Sumaq Ñan" />
+
+          <div className="sidebar-brand-text">
+            <h2>SUMAQ ÑAN</h2>
+            <span>RESTAURANTE</span>
+          </div>
         </div>
-      </div>
 
-      {/* MENÚ */}
-      <nav className="sidebar-navigation">
+        <nav className="sidebar-navigation">
+          <span className="sidebar-section-title">
+            MENÚ PRINCIPAL
+          </span>
 
-        <span className="sidebar-section-title">
-          MENÚ PRINCIPAL
-        </span>
+          {menuItems.map((item) => (
+            <button
+              key={item.id}
+              className={`sidebar-link ${
+                item.id === 'dashboard' ? 'active' : ''
+              }`}
+              type="button"
+              onClick={onCerrar}
+            >
+              <span className="sidebar-icon">{item.icon}</span>
+              <span>{item.label}</span>
+            </button>
+          ))}
+        </nav>
 
-        {menuItems.map((item) => (
-          <button
-            key={item.id}
-            className={`sidebar-link ${
-              item.id === 'dashboard' ? 'active' : ''
-            }`}
-            type="button"
-          >
-            <span className="sidebar-icon">
-              {item.icon}
-            </span>
-
-            <span>{item.label}</span>
-          </button>
-        ))}
-
-      </nav>
-
-      {/* PIE DEL MENÚ */}
-      <div className="sidebar-footer">
-
-        <button className="sidebar-logout" type="button">
-          <span>↪</span>
-          Cerrar sesión
-        </button>
-
-      </div>
-
-    </aside>
+      </aside>
+    </>
   )
 }
 
 export default Sidebar
+

@@ -96,3 +96,49 @@
   background: #C84B31;
   border: 1px solid white;
 }
+
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-menu-button {
+  display: none;
+  border: none;
+  background: transparent;
+  color: #44271D;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+
+  .header {
+    height: 65px;
+    padding: 0 15px;
+  }
+
+  .header-menu-button {
+    display: block;
+  }
+
+  .header-left span {
+    font-size: 14px;
+  }
+
+  .header-right {
+    gap: 12px;
+  }
+
+  .header-profile-info {
+    display: none;
+  }
+
+  .header-avatar {
+    width: 36px;
+    height: 36px;
+  }
+
+}

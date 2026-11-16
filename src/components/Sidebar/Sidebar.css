@@ -175,3 +175,41 @@
   background: rgba(255,255,255,0.08);
   color: #FFFFFF;
 }
+
+
+/* ========================================
+   RESPONSIVE - SIDEBAR MÓVIL
+======================================== */
+
+.sidebar-overlay {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+
+    width: 270px;
+    min-width: 270px;
+    height: 100dvh;
+
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.45);
+  }
+}
