@@ -1,6 +1,12 @@
 
+/* ========================================
+   CONFIGURACIÓN GENERAL
+======================================== */
+
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .login-page {
@@ -11,103 +17,74 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* PANEL IZQUIERDO */
+/* ========================================
+   PANEL IZQUIERDO - FOTOGRAFÍA
+======================================== */
 
 .login-brand {
+  position: relative;
+
   background:
-    radial-gradient(circle at 20% 20%, #895238 0%, transparent 40%),
-    linear-gradient(145deg, #6F351F, #3E2118);
+    linear-gradient(
+      rgba(35, 17, 10, 0.20),
+      rgba(35, 17, 10, 0.30)
+    ),
+    url('../../assets/login-panel.png');
 
-  color: #FFF8F0;
-  padding: 55px 65px;
-  display: flex;
-  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  min-height: 100vh;
 }
 
-.brand-content {
-  width: 100%;
-  max-width: 600px;
-  margin: auto;
-  min-height: 650px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.brand-logo,
-.mobile-brand {
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  font-size: 20px;
-  font-weight: bold;
-  letter-spacing: 3px;
-}
-
-.logo-symbol {
-  width: 45px;
-  height: 45px;
-  border: 2px solid #C68B45;
-  color: #E4B76F;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  font-family: Georgia, serif;
-  font-size: 27px;
-}
-
-.brand-message {
-  margin: 65px 0;
-}
-
-.brand-subtitle,
-.welcome-label {
-  color: #D7AA70;
-  font-size: 11px;
-  letter-spacing: 3px;
-  font-weight: bold;
-}
-
-.brand-message h1 {
-  font-family: Georgia, serif;
-  font-size: clamp(38px, 4vw, 60px);
-  font-weight: normal;
-  line-height: 1.2;
-  margin: 25px 0;
-}
-
-.brand-message h1 span {
-  color: #D7AA70;
-  font-style: italic;
-}
-
-.brand-message p {
-  color: #E8D9CF;
-  font-size: 15px;
-  line-height: 1.8;
-  max-width: 380px;
-}
-
-.brand-footer {
-  font-size: 10px;
-  letter-spacing: 3px;
-  color: #C9A68D;
-}
-
-/* PANEL DERECHO */
+/* ========================================
+   PANEL DERECHO - FORMULARIO
+======================================== */
 
 .login-form-section {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 45px;
+  min-height: 100vh;
 }
 
 .login-form-container {
   width: 100%;
   max-width: 420px;
 }
+
+/* ========================================
+   LOGOTIPO DE SUMAQ ÑAN
+======================================== */
+
+.login-brand-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 35px;
+}
+
+.login-brand-logo img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.login-brand-logo span {
+  color: #6F351F;
+  font-family: Georgia, serif;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+/* ========================================
+   ENCABEZADO
+======================================== */
 
 .login-heading {
   margin-bottom: 40px;
@@ -126,6 +103,17 @@
   font-size: 14px;
   line-height: 1.7;
 }
+
+.welcome-label {
+  color: #D7AA70;
+  font-size: 11px;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+
+/* ========================================
+   CAMPOS DEL FORMULARIO
+======================================== */
 
 .form-group {
   margin-bottom: 25px;
@@ -161,6 +149,10 @@
   color: #B7AAA1;
 }
 
+/* ========================================
+   CONTRASEÑA
+======================================== */
+
 .password-container {
   position: relative;
 }
@@ -181,6 +173,14 @@
   font-size: 12px;
 }
 
+.password-toggle:hover {
+  color: #512819;
+}
+
+/* ========================================
+   BOTÓN DE INGRESO
+======================================== */
+
 .login-button {
   width: 100%;
   height: 54px;
@@ -192,10 +192,12 @@
   font-size: 14px;
   font-weight: bold;
   cursor: pointer;
+
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 15px;
+
   transition: background 0.2s, transform 0.2s;
 }
 
@@ -207,6 +209,10 @@
 .login-button span {
   font-size: 20px;
 }
+
+/* ========================================
+   PIE DEL FORMULARIO
+======================================== */
 
 .login-bottom {
   margin-top: 65px;
@@ -228,11 +234,9 @@
   margin-top: 10px;
 }
 
-.mobile-brand {
-  display: none;
-}
-
-/* ADAPTACIÓN A CELULARES */
+/* ========================================
+   ADAPTACIÓN A TABLETS Y CELULARES
+======================================== */
 
 @media (max-width: 800px) {
 
@@ -241,6 +245,7 @@
     min-height: 100vh;
   }
 
+  /* Ocultar fotografía en celulares */
   .login-brand {
     display: none;
   }
@@ -254,12 +259,18 @@
     max-width: 440px;
   }
 
-  .mobile-brand {
-    display: flex;
-    justify-content: center;
-    color: #6F351F;
-    margin-bottom: 65px;
-    font-size: 17px;
+  /* El logo se mantiene visible */
+  .login-brand-logo {
+    margin-bottom: 50px;
+  }
+
+  .login-brand-logo img {
+    width: 75px;
+    height: 75px;
+  }
+
+  .login-brand-logo span {
+    font-size: 19px;
   }
 
   .login-heading h2 {
@@ -271,16 +282,38 @@
   }
 }
 
+/* ========================================
+   CELULARES PEQUEÑOS
+======================================== */
+
 @media (max-width: 380px) {
+
   .login-form-section {
     padding: 25px 20px;
   }
 
-  .mobile-brand {
-    margin-bottom: 45px;
+  .login-brand-logo {
+    margin-bottom: 40px;
+  }
+
+  .login-brand-logo img {
+    width: 65px;
+    height: 65px;
+  }
+
+  .login-brand-logo span {
+    font-size: 17px;
   }
 
   .login-heading h2 {
     font-size: 30px;
+  }
+
+  .login-heading {
+    margin-bottom: 30px;
+  }
+
+  .login-bottom {
+    margin-top: 45px;
   }
 }

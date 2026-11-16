@@ -21,69 +21,46 @@ function Login() {
   return (
     <main className="login-page">
 
-      {/* PANEL IZQUIERDO */}
+      {/* PANEL IZQUIERDO: SOLO FOTOGRAFÍA */}
       <section className="login-brand">
-
-        <div className="brand-content">
-
-          <div className="brand-logo">
-            <span className="logo-symbol">S</span>
-            <span>SUMAQ ÑAN</span>
-          </div>
-
-          <div className="brand-message">
-            <span className="brand-subtitle">
-              SABOR · TRADICIÓN · CALIDAD
-            </span>
-
-            <h1>
-              Una experiencia
-              <br />
-              que comienza
-              <br />
-              <span>en cada detalle.</span>
-            </h1>
-
-            <p>
-              Gestiona tu restaurante de manera sencilla,
-              organizada y eficiente.
-            </p>
-          </div>
-
-          <div className="brand-footer">
-            SISTEMA DE GESTIÓN RESTAURANTE
-          </div>
-
-        </div>
-
       </section>
 
-      {/* PANEL DERECHO */}
+      {/* PANEL DERECHO: FORMULARIO */}
       <section className="login-form-section">
 
         <div className="login-form-container">
 
-          <div className="mobile-brand">
-            <span className="logo-symbol">S</span>
-            <span>SUMAQ ÑAN</span>
+          {/* LOGOTIPO DE SUMAQ ÑAN */}
+          <div className="login-brand-logo">
+
+            <img
+              src="/icons/icon-512.png"
+              alt="Logotipo de Sumaq Ñan"
+            />
+
+
           </div>
 
+          {/* ENCABEZADO */}
           <div className="login-heading">
+
             <span className="welcome-label">
               BIENVENIDO DE NUEVO
             </span>
 
             <h2>Iniciar sesión</h2>
 
-            <p>
-              Ingresa tus credenciales para acceder al sistema.
-            </p>
           </div>
 
+          {/* FORMULARIO */}
           <form onSubmit={handleSubmit}>
 
+            {/* USUARIO */}
             <div className="form-group">
-              <label htmlFor="usuario">Usuario</label>
+
+              <label htmlFor="usuario">
+                Usuario
+              </label>
 
               <input
                 id="usuario"
@@ -94,12 +71,18 @@ function Login() {
                 autoComplete="username"
                 required
               />
+
             </div>
 
+            {/* CONTRASEÑA */}
             <div className="form-group">
-              <label htmlFor="password">Contraseña</label>
+
+              <label htmlFor="password">
+                Contraseña
+              </label>
 
               <div className="password-container">
+
                 <input
                   id="password"
                   type={mostrarPassword ? 'text' : 'password'}
@@ -114,23 +97,37 @@ function Login() {
                   type="button"
                   className="password-toggle"
                   onClick={() => setMostrarPassword(!mostrarPassword)}
-                  aria-label={mostrarPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+                  aria-label={
+                    mostrarPassword
+                      ? 'Ocultar contraseña'
+                      : 'Mostrar contraseña'
+                  }
                 >
                   {mostrarPassword ? 'Ocultar' : 'Mostrar'}
                 </button>
+
               </div>
+
             </div>
 
-            <button type="submit" className="login-button">
+            {/* BOTÓN INGRESAR */}
+            <button
+              type="submit"
+              className="login-button"
+            >
               Ingresar al sistema
               <span>→</span>
             </button>
 
           </form>
 
+          {/* PIE DEL FORMULARIO */}
           <div className="login-bottom">
-            <span>SUMAQ ÑAN</span>
-            <p>© 2026 · Sistema de gestión de restaurante</p>
+
+            <p>
+              © 2026 · Sistema de gestión
+            </p>
+
           </div>
 
         </div>
