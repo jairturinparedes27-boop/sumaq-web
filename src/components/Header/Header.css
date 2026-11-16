@@ -1,8 +1,14 @@
 
+/* =====================================
+   CONFIGURACIÓN GENERAL
+===================================== */
+
 .header {
   width: 100%;
-  height: 80px;
-  padding: 0 35px;
+  min-width: 0;
+  height: 75px;
+  min-height: 75px;
+  padding: 0 30px;
 
   display: flex;
   align-items: center;
@@ -10,135 +16,216 @@
 
   background: #FFFFFF;
   border-bottom: 1px solid #EADFD5;
+
+  box-sizing: border-box;
+  position: relative;
+  z-index: 100;
+  flex-shrink: 0;
 }
 
-.header-left span {
+/* =====================================
+   LADO IZQUIERDO
+===================================== */
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 0;
+
   color: #44271D;
-  font-size: 17px;
-  font-weight: bold;
+  font-size: 15px;
 }
+
+.header-left > span {
+  white-space: nowrap;
+}
+
+.header-menu-button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  background: transparent;
+  color: #44271D;
+
+  font-size: 25px;
+  cursor: pointer;
+}
+
+/* =====================================
+   LADO DERECHO
+===================================== */
 
 .header-right {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 22px;
+  flex-shrink: 0;
 }
 
 .header-notification {
-  width: 38px;
-  height: 38px;
+  position: relative;
+
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   border: none;
   border-radius: 50%;
-  background: #FFF8F0;
+  background: #F8EFE5;
 
-  color: #6F351F;
-  font-size: 20px;
+  font-size: 19px;
   cursor: pointer;
 }
+
+.notification-badge {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+
+  width: 8px;
+  height: 8px;
+
+  background: #C94B3B;
+  border: 2px solid #FFFFFF;
+  border-radius: 50%;
+}
+
+/* =====================================
+   PERFIL
+===================================== */
 
 .header-profile {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 11px;
 }
 
 .header-avatar {
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   border-radius: 50%;
-  background: #D7AA70;
-  color: #44271D;
+  background: #6F351F;
+  color: #FFFFFF;
   font-weight: bold;
 }
 
+.header-profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .header-profile-info strong {
-  display: block;
   color: #44271D;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .header-profile-info span {
-  display: block;
-  color: #8C8179;
-  font-size: 10px;
-  margin-top: 4px;
+  color: #A99A90;
+  font-size: 11px;
 }
 
-.header-notification {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  border: none;
-  border-radius: 50%;
-  background: #FFF8F0;
-  color: #6F351F;
-  font-size: 19px;
-  cursor: pointer;
+/* =====================================
+   TABLETS Y PANTALLAS MEDIANAS
+===================================== */
+
+@media (max-width: 1024px) {
+  .header {
+    padding: 0 20px;
+  }
+
+  .header-right {
+    gap: 15px;
+  }
 }
 
-.header-notification:hover {
-  background: #F3E5D5;
-}
-
-.notification-badge {
-  position: absolute;
-  top: 7px;
-  right: 7px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #C84B31;
-  border: 1px solid white;
-}
-
-
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.header-menu-button {
-  display: none;
-  border: none;
-  background: transparent;
-  color: #44271D;
-  font-size: 25px;
-  cursor: pointer;
-}
+/* =====================================
+   CELULARES
+===================================== */
 
 @media (max-width: 768px) {
-
   .header {
+    width: 100%;
     height: 65px;
+    min-height: 65px;
     padding: 0 15px;
+    gap: 8px;
+  }
+
+  .header-left {
+    flex: 1;
+    gap: 10px;
   }
 
   .header-menu-button {
-    display: block;
+    display: flex;
+    width: 35px;
+    height: 35px;
+    flex-shrink: 0;
+    font-size: 23px;
   }
 
-  .header-left span {
-    font-size: 14px;
+  .header-left > span {
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .header-right {
     gap: 12px;
   }
 
-  .header-profile-info {
-    display: none;
+  .header-notification {
+    width: 35px;
+    height: 35px;
+    font-size: 17px;
   }
 
   .header-avatar {
-    width: 36px;
-    height: 36px;
+    width: 35px;
+    height: 35px;
+    font-size: 13px;
   }
 
+  .header-profile {
+    gap: 0;
+  }
+
+  .header-profile-info {
+    display: none;
+  }
+}
+
+/* =====================================
+   CELULARES PEQUEÑOS
+===================================== */
+
+@media (max-width: 360px) {
+  .header {
+    padding: 0 9px;
+  }
+
+  .header-left {
+    gap: 5px;
+  }
+
+  .header-right {
+    gap: 7px;
+  }
+
+  .header-left > span {
+    font-size: 11px;
+  }
 }
