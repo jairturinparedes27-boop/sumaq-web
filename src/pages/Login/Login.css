@@ -270,12 +270,13 @@
 
   /* El logo se mantiene visible */
   .login-brand-logo {
-    margin-bottom: 50px;
+    margin-bottom: 35px;
   }
 
   .login-brand-logo img {
-    width: 75px;
-    height: 75px;
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
   }
 
   .login-brand-logo span {
@@ -306,8 +307,8 @@
   }
 
   .login-brand-logo img {
-    width: 65px;
-    height: 65px;
+    width: 100px;
+    height: 100px;
   }
 
   .login-brand-logo span {
