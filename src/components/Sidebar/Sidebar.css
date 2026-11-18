@@ -1,19 +1,35 @@
-
 /* ========================================
    SIDEBAR - CONTENEDOR PRINCIPAL
+   Fixed en TODAS las pantallas (desktop + mobile)
 ======================================== */
 
 .sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
   width: 270px;
   min-width: 270px;
   height: 100vh;
+  height: 100dvh; /* Mobile viewport dinámico */
   background: #44271D;
   color: #FFFFFF;
 
   display: flex;
   flex-direction: column;
 
-  padding: 28px 18px;
+  padding: 16px 18px;  /* Reducido padding general */
+  padding-top: 35px;   /* Header 75px - overlap 5px para que suba más */
+
+  /* Desktop: siempre visible */
+  transform: translateX(0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Sombra cuando está "abierto" visualmente en mobile */
+.sidebar.sidebar-open {
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
 }
 
 /* ========================================
@@ -25,7 +41,7 @@
   align-items: center;
   gap: 12px;
 
-  padding: 0 8px 30px;
+  padding: 0 8px 20px;  /* Reducido padding-bottom de 30px a 20px */
   border-bottom: 1px solid rgba(255,255,255,0.12);
 }
 
@@ -57,7 +73,8 @@
 
 .sidebar-navigation {
   flex: 1;
-  padding-top: 30px;
+  padding-top: 10px;  /* Reducido de 30px a 20px */
+  overflow-y: auto; /* Scroll interno si hay muchos items */
 }
 
 .sidebar-section-title {
@@ -103,6 +120,16 @@
   font-weight: bold;
 }
 
+.sidebar-link:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.sidebar-link:disabled:hover {
+  background: transparent;
+  color: #E9DDD4;
+}
+
 .sidebar-icon {
   width: 22px;
   text-align: center;
@@ -115,7 +142,8 @@
 
 .sidebar-footer {
   border-top: 1px solid rgba(255,255,255,0.12);
-  padding-top: 20px;
+  padding-top: 14px;  /* Reducido de 20px a 14px */
+  flex-shrink: 0;
 }
 
 .sidebar-user {
@@ -123,7 +151,7 @@
   align-items: center;
   gap: 12px;
   padding: 0 5px;
-  margin-bottom: 20px;
+  margin-bottom: 12px;  /* Reducido de 20px a 12px */
 }
 
 .sidebar-avatar {
@@ -178,31 +206,26 @@
 
 
 /* ========================================
-   RESPONSIVE - SIDEBAR MÓVIL
+   OVERLAY (solo mobile)
 ======================================== */
 
 .sidebar-overlay {
   display: none;
 }
 
+/* ========================================
+   MOBILE: Sidebar deslizable
+======================================== */
+
 @media (max-width: 768px) {
-
   .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-
-    width: 270px;
-    min-width: 270px;
-    height: 100dvh;
-
+    padding-top: 62px; /* Header mobile 65px - overlap 3px */
     transform: translateX(-100%);
-    transition: transform 0.3s ease;
   }
 
   .sidebar.sidebar-open {
     transform: translateX(0);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
   }
 
   .sidebar-overlay {
@@ -211,5 +234,34 @@
     inset: 0;
     z-index: 999;
     background: rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
   }
+
+  .sidebar-overlay.overlay-visible {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* ========================================
+   SCROLLBAR PERSONALIZADO (Webkit)
+======================================== */
+
+.sidebar-navigation::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-navigation::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-navigation::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.15);
+  border-radius: 3px;
+}
+
+.sidebar-navigation::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.25);
 }

@@ -1,0 +1,420 @@
+/* src/pages/Mesas/Mesas.css */
+/* Estilos para la página principal del módulo Mesas */
+
+/* ========================================
+   LAYOUT CON SIDEBAR FIJO
+======================================== */
+
+.mesas-layout {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #FFF8F0;
+}
+
+/* Sidebar se renderiza pero es position:fixed (ver Sidebar.css) */
+/* El contenido principal tiene margin-left para no quedar debajo del sidebar */
+
+.mesas-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  /* Margin-left para desktop (sidebar fijo 270px) */
+  margin-left: 270px;
+  transition: margin-left 0.3s ease;
+
+  /* Scroll vertical en el área de contenido */
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ========================================
+   CONTENEDOR PRINCIPAL (ancho fluido con max)
+======================================== */
+
+.mesas-page {
+  width: 100%;
+  max-width: 1600px;          /* Aumentado de 1400px para menos espacio en blanco lateral */
+  margin: 0 auto;             /* Centrado horizontal en el espacio disponible */
+  padding: 24px;
+  box-sizing: border-box;
+  background: #FFF8F0;
+  /* flex-shrink: 0 eliminado para permitir que el contenido crezca */
+  min-height: 100%;           /* Ocupa al menos todo el alto del contenedor scrolleable */
+}
+
+/* Loading */
+.mesas-page__loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 16px;
+  color: #8B6B5A;
+}
+
+.mesas-page__spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(68, 39, 29, 0.1);
+  border-top-color: #D7AA70;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ========================================
+   HEADER DEL MÓDULO
+======================================== */
+
+.mesas-page__header {
+  margin-bottom: 8px;
+}
+
+.mesas-page__header-main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.mesas-page__titulos {
+  flex: 1;
+  min-width: 200px;
+}
+
+.mesas-page__titulo {
+  margin: 0 0 4px;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #44271D;
+  line-height: 1.2;
+}
+
+.mesas-page__subtitulo {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #8B6B5A;
+  font-weight: 400;
+}
+
+/* Botones del header */
+.mesas-page__acciones {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.mesas-page__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+
+.mesas-page__btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(215, 170, 112, 0.4);
+}
+
+.mesas-page__btn:active {
+  transform: scale(0.98);
+}
+
+.mesas-page__btn--primaria {
+  background: linear-gradient(135deg, #44271D 0%, #5D3A2A 100%);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(68, 39, 29, 0.25);
+}
+
+.mesas-page__btn--primaria:hover {
+  background: linear-gradient(135deg, #5D3A2A 0%, #754D3A 100%);
+  box-shadow: 0 4px 16px rgba(68, 39, 29, 0.35);
+}
+
+.mesas-page__btn--secundaria {
+  background: transparent;
+  color: #8B6B5A;
+  border: 1px solid rgba(68, 39, 29, 0.15);
+  padding: 12px;
+}
+
+.mesas-page__btn--secundaria:hover {
+  background: rgba(68, 39, 29, 0.04);
+  border-color: rgba(68, 39, 29, 0.25);
+  color: #44271D;
+}
+
+/* ========================================
+   RESUMEN DE ESTADOS
+======================================== */
+
+.mesas-page__resumen {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+@media (min-width: 768px) {
+  .mesas-page__resumen {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.mesas-page__resumen-item {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow:
+    0 2px 8px rgba(68, 39, 29, 0.06),
+    0 1px 3px rgba(68, 39, 29, 0.04);
+  border: 1px solid rgba(68, 39, 29, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mesas-page__resumen-item:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 16px rgba(68, 39, 29, 0.1),
+    0 2px 6px rgba(68, 39, 29, 0.06);
+}
+
+.mesas-page__resumen-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.mesas-page__resumen-valor {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #44271D;
+  line-height: 1.2;
+}
+
+.mesas-page__resumen-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #8B6B5A;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* Colores por estado en resumen */
+.mesas-page__resumen--disponible .mesas-page__resumen-valor { color: #2E7D32; }
+.mesas-page__resumen--ocupada .mesas-page__resumen-valor { color: #C62828; }
+.mesas-page__resumen--reservada .mesas-page__resumen-valor { color: #F57F17; }
+.mesas-page__resumen--total .mesas-page__resumen-valor { color: #44271D; }
+
+/* ========================================
+   ERROR
+======================================== */
+
+.mesas-page__error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  background: #FDEDEC;
+  border: 1px solid rgba(198, 40, 40, 0.2);
+  border-radius: 10px;
+  color: #C62828;
+  font-size: 0.875rem;
+  margin-bottom: 20px;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================================
+   GRID DE MESAS
+======================================== */
+
+.mesas-page__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 520px) {
+  .mesas-page__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .mesas-page__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .mesas-page__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1500px) {
+  .mesas-page__grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* Estado vacío */
+.mesas-page__vacio {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+  text-align: center;
+  background: #FFFFFF;
+  border-radius: 16px;
+  border: 2px dashed rgba(68, 39, 29, 0.1);
+  min-height: 300px;
+}
+
+.mesas-page__vacio-icon {
+  font-size: 4rem;
+  opacity: 0.3;
+  margin-bottom: 16px;
+}
+
+.mesas-page__vacio h3 {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+  color: #44271D;
+}
+
+.mesas-page__vacio p {
+  margin: 0 0 24px;
+  color: #8B6B5A;
+  max-width: 300px;
+}
+
+/* ========================================
+   MODAL CONFIRMACIÓN ELIMINAR - Estilos extra
+======================================== */
+
+.mesa-modal--confirmar {
+  max-width: 400px;
+}
+
+.mesa-modal__confirmar-icon {
+  font-size: 3rem;
+  margin-bottom: 8px;
+}
+
+.mesa-modal__btn--eliminar {
+  background: linear-gradient(135deg, #C62828 0%, #B71C1C 100%);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(198, 40, 40, 0.25);
+}
+
+.mesa-modal__btn--eliminar:hover:not(:disabled) {
+  background: linear-gradient(135deg, #B71C1C 0%, #9A0007 100%);
+  box-shadow: 0 4px 16px rgba(198, 40, 40, 0.35);
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 768px) {
+  .mesas-content {
+    margin-left: 0; /* Sin sidebar en mobile (es drawer) */
+  }
+
+  .mesas-page {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .mesas-page__header-main {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .mesas-page__acciones {
+    justify-content: stretch;
+  }
+
+  .mesas-page__btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .mesas-page__btn--secundaria {
+    flex: 0 0 auto;
+  }
+
+  .mesas-page__titulo {
+    font-size: 1.5rem;
+  }
+
+  .mesas-page__resumen {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .mesas-page__resumen-item {
+    padding: 12px;
+  }
+
+  .mesas-page__resumen-valor {
+    font-size: 1.25rem;
+  }
+
+  .mesas-page__resumen-icon {
+    font-size: 1.25rem;
+  }
+}
+
+/* ========================================
+   ANIMACIONES DE ENTRADA
+======================================== */
+
+@keyframes paginaEntrada {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mesas-page > * {
+  animation: paginaEntrada 0.4s ease-out backwards;
+}
+
+.mesas-page__header { animation-delay: 0.05s; }
+.mesas-page__resumen { animation-delay: 0.1s; }
+.mesas-page__grid { animation-delay: 0.15s; }

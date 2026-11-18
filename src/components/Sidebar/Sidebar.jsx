@@ -1,26 +1,36 @@
 
+import { useNavigate, useLocation } from 'react-router-dom'
 import './Sidebar.css'
 
 function Sidebar({ abierto, onCerrar }) {
+  const navigate = useNavigate()
+  const location = useLocation()
+
   const menuItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: '▦' },
-    { id: 'mesas', label: 'Mesas', icon: '▤' },
-    { id: 'pedidos', label: 'Pedidos', icon: '🛒' },
-    { id: 'cocina', label: 'Cocina', icon: '♨' },
-    { id: 'productos', label: 'Productos', icon: '▣' },
-    { id: 'insumos', label: 'Insumos', icon: '▧' },
-    { id: 'trabajadores', label: 'Trabajadores', icon: '♙' },
-    { id: 'reportes', label: 'Reportes', icon: '▥' }
+    { id: 'dashboard', label: 'Dashboard', icon: '▦', to: '/dashboard' },
+    { id: 'mesas', label: 'Mesas', icon: '▤', to: '/mesas' },
+    { id: 'pedidos', label: 'Pedidos', icon: '🛒', to: '/pedidos' },
+    { id: 'cocina', label: 'Cocina', icon: '♨', to: '/cocina' },
+    { id: 'productos', label: 'Productos', icon: '▣', to: '/productos' },
+    { id: 'insumos', label: 'Insumos', icon: '▧', to: '/insumos' },
+    { id: 'trabajadores', label: 'Trabajadores', icon: '♙', to: '/trabajadores' },
+    { id: 'reportes', label: 'Reportes', icon: '▥', to: '/reportes' }
   ]
+
+  const manejarClick = (item) => {
+    if (item.to) {
+      navigate(item.to)
+    }
+    onCerrar()
+  }
 
   return (
     <>
-      {abierto && (
-        <div
-          className="sidebar-overlay"
-          onClick={onCerrar}
-        />
-      )}
+      <div
+        className={`sidebar-overlay ${abierto ? 'overlay-visible' : ''}`}
+        onClick={onCerrar}
+        aria-hidden="true"
+      />
 
       <aside className={`sidebar ${abierto ? 'sidebar-open' : ''}`}>
 
@@ -43,22 +53,24 @@ function Sidebar({ abierto, onCerrar }) {
             MENÚ PRINCIPAL
           </span>
 
-          {menuItems.map((item) => (
-            <button
-              key={item.id}
-              className={`sidebar-link ${
-                item.id === 'dashboard' ? 'active' : ''
-              }`}
-              type="button"
-              onClick={onCerrar}
-            >
-              <span className="sidebar-icon">
-                {item.icon}
-              </span>
+          {menuItems.map((item) => {
+            const isActive = location.pathname === item.to
+            return (
+              <button
+                key={item.id}
+                className={`sidebar-link ${isActive ? 'active' : ''}`}
+                type="button"
+                onClick={() => manejarClick(item)}
+                disabled={!item.to} // Deshabilitar los que no tienen ruta aún
+              >
+                <span className="sidebar-icon">
+                  {item.icon}
+                </span>
 
-              <span>{item.label}</span>
-            </button>
-          ))}
+                <span>{item.label}</span>
+              </button>
+            )
+          })}
         </nav>
 
         {/* PIE DEL MENÚ */}

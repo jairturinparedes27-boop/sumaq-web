@@ -1,0 +1,405 @@
+/* src/components/Mesas/MesaCard.css */
+/* Estilos para la tarjeta individual de mesa */
+
+/* ========================================
+   CONTENEDOR PRINCIPAL
+   ======================================== */
+
+.mesa-card {
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 16px;
+  box-shadow:
+    0 2px 8px rgba(68, 39, 29, 0.08),
+    0 1px 3px rgba(68, 39, 29, 0.06);
+  border: 1px solid rgba(68, 39, 29, 0.08);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+  cursor: pointer;
+}
+
+.mesa-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 8px 24px rgba(68, 39, 29, 0.12),
+    0 4px 12px rgba(68, 39, 29, 0.08);
+  border-color: rgba(68, 39, 29, 0.15);
+}
+
+.mesa-card:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(215, 170, 112, 0.4),
+    0 8px 24px rgba(68, 39, 29, 0.12);
+  border-color: #D7AA70;
+}
+
+/* Selección visual (para "Comenzar pedido") */
+.mesa-card--seleccionada {
+  border-color: #D7AA70;
+  box-shadow:
+    0 0 0 2px #D7AA70,
+    0 8px 24px rgba(215, 170, 112, 0.2);
+}
+
+/* ========================================
+   BADGE DE ESTADO (esquina superior)
+   ======================================== */
+
+.mesa-card__badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.mesa-card__badge-icon {
+  font-size: 0.65rem;
+  line-height: 1;
+}
+
+/* Estado: Disponible */
+.estado-disponible .mesa-card__badge {
+  background: #E8F5E9;
+  color: #2E7D32;
+}
+
+/* Estado: Ocupada */
+.estado-ocupada .mesa-card__badge {
+  background: #FDEDEC;
+  color: #C62828;
+}
+
+/* Estado: Reservada */
+.estado-reservada .mesa-card__badge {
+  background: #FFF8E1;
+  color: #F57F17;
+}
+
+/* ========================================
+   HEADER: Número + Nombre + Menú
+   ======================================== */
+
+.mesa-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  gap: 12px;
+}
+
+.mesa-card__identificacion {
+  flex: 1;
+  min-width: 0;
+}
+
+.mesa-card__numero {
+  display: inline-block;
+  background: linear-gradient(135deg, #44271D 0%, #5D3A2A 100%);
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.mesa-card__nombre {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #44271D;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Menú de acciones (tres puntos) */
+.mesa-card__menu {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.mesa-card__menu-trigger {
+  background: transparent;
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #8B6B5A;
+  transition: background 0.2s ease, color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mesa-card__menu-trigger:hover,
+.mesa-card__menu-trigger:focus {
+  background: rgba(68, 39, 29, 0.06);
+  color: #44271D;
+  outline: none;
+}
+
+.mesa-card__menu-trigger:focus-visible {
+  box-shadow: 0 0 0 2px rgba(215, 170, 112, 0.4);
+}
+
+.mesa-card__menu-trigger span {
+  font-size: 1.25rem;
+  line-height: 1;
+  font-weight: 300;
+}
+
+/* Dropdown */
+.mesa-card__dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  background: #FFFFFF;
+  border-radius: 10px;
+  box-shadow:
+    0 8px 24px rgba(68, 39, 29, 0.15),
+    0 4px 12px rgba(68, 39, 29, 0.1);
+  border: 1px solid rgba(68, 39, 29, 0.08);
+  min-width: 180px;
+  padding: 6px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+  z-index: 10;
+}
+
+.mesa-card__menu:focus-within .mesa-card__dropdown,
+.mesa-card__menu:hover .mesa-card__dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.mesa-card__dropdown-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: transparent;
+  border: none;
+  font-size: 0.85rem;
+  color: #44271D;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s ease;
+}
+
+.mesa-card__dropdown-item:hover:not(:disabled),
+.mesa-card__dropdown-item:focus:not(:disabled) {
+  background: rgba(68, 39, 29, 0.05);
+  outline: none;
+}
+
+.mesa-card__dropdown-item:disabled {
+  color: #B8A08F;
+  cursor: not-allowed;
+}
+
+.mesa-card__dropdown-item--editar {
+  color: #44271D;
+}
+
+.mesa-card__dropdown-item--eliminar {
+  color: #C62828;
+}
+
+.mesa-card__divider {
+  border: none;
+  border-top: 1px solid rgba(68, 39, 29, 0.08);
+  margin: 6px 0;
+}
+
+/* ========================================
+   INFO: Capacidad + Zona
+   ======================================== */
+
+.mesa-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.mesa-card__capacidad,
+.mesa-card__zona {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mesa-card__icono {
+  font-size: 1rem;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.mesa-card__valor {
+  font-size: 0.875rem;
+  color: #5D3A2A;
+  font-weight: 500;
+}
+
+/* ========================================
+   BOTÓN PRINCIPAL DE ACCIÓN
+   ======================================== */
+
+.mesa-card__accion-principal {
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.mesa-card__btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+
+.mesa-card__btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(215, 170, 112, 0.4);
+}
+
+.mesa-card__btn:active {
+  transform: scale(0.98);
+}
+
+/* Botón primaria - Comenzar pedido (Disponible) */
+.mesa-card__btn--primaria {
+  background: linear-gradient(135deg, #44271D 0%, #5D3A2A 100%);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(68, 39, 29, 0.25);
+}
+
+.mesa-card__btn--primaria:hover {
+  background: linear-gradient(135deg, #5D3A2A 0%, #754D3A 100%);
+  box-shadow: 0 4px 16px rgba(68, 39, 29, 0.35);
+}
+
+/* Botón secundaria - Ver pedido (Ocupada) */
+.mesa-card__btn--secundaria {
+  background: #FFF8F0;
+  color: #44271D;
+  border: 1px solid rgba(68, 39, 29, 0.15);
+}
+
+.mesa-card__btn--secundaria:hover {
+  background: #F5EDE3;
+  border-color: rgba(68, 39, 29, 0.25);
+}
+
+/* Botón terciaria - Gestionar reserva (Reservada) */
+.mesa-card__btn--terciaria {
+  background: #FFF8E1;
+  color: #F57F17;
+  border: 1px solid rgba(245, 127, 23, 0.2);
+}
+
+.mesa-card__btn--terciaria:hover {
+  background: #FFECB3;
+  border-color: rgba(245, 127, 23, 0.4);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 640px) {
+  .mesa-card {
+    padding: 16px;
+    min-height: 200px;
+  }
+
+  .mesa-card__badge {
+    top: 10px;
+    right: 10px;
+    padding: 3px 8px;
+    font-size: 0.65rem;
+  }
+
+  .mesa-card__numero {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+  }
+
+  .mesa-card__nombre {
+    font-size: 1rem;
+  }
+
+  .mesa-card__valor {
+    font-size: 0.8rem;
+  }
+
+  .mesa-card__btn {
+    padding: 10px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+/* ========================================
+   ANIMACIÓN DE ENTRADA
+   ======================================== */
+
+@keyframes mesaCardEntrada {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.mesa-card {
+  animation: mesaCardEntrada 0.4s ease-out backwards;
+}
+
+/* Retraso escalonado para grid */
+.mesa-card:nth-child(1) { animation-delay: 0.05s; }
+.mesa-card:nth-child(2) { animation-delay: 0.1s; }
+.mesa-card:nth-child(3) { animation-delay: 0.15s; }
+.mesa-card:nth-child(4) { animation-delay: 0.2s; }
+.mesa-card:nth-child(5) { animation-delay: 0.25s; }
+.mesa-card:nth-child(6) { animation-delay: 0.3s; }
+.mesa-card:nth-child(7) { animation-delay: 0.35s; }
+.mesa-card:nth-child(8) { animation-delay: 0.4s; }

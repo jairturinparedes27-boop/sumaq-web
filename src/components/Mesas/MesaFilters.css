@@ -1,0 +1,269 @@
+/* src/components/Mesas/MesaFilters.css */
+/* Estilos para la barra de filtros del módulo Mesas */
+
+/* ========================================
+   CONTENEDOR PRINCIPAL
+   ======================================== */
+
+.mesa-filters {
+  background: #FFFFFF;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow:
+    0 2px 8px rgba(68, 39, 29, 0.06),
+    0 1px 3px rgba(68, 39, 29, 0.04);
+  border: 1px solid rgba(68, 39, 29, 0.06);
+  margin-bottom: 24px;
+}
+
+/* Layout responsive */
+@media (min-width: 768px) {
+  .mesa-filters {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    padding: 20px 24px;
+  }
+}
+
+/* ========================================
+   BÚSQUEDA
+   ======================================== */
+
+.mesa-filters__busqueda {
+  flex: 1;
+  min-width: 0;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 768px) {
+  .mesa-filters__busqueda {
+    margin-bottom: 0;
+    max-width: 400px;
+  }
+}
+
+.mesa-filters__label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #8B6B5A;
+  margin-bottom: 6px;
+}
+
+.mesa-filters__input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.mesa-filters__icon {
+  position: absolute;
+  left: 14px;
+  font-size: 1rem;
+  color: #B8A08F;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.mesa-filters__input {
+  width: 100%;
+  padding: 12px 16px 12px 44px;
+  border: 1px solid rgba(68, 39, 29, 0.12);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: #44271D;
+  background: #FFF8F0;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.mesa-filters__input::placeholder {
+  color: #B8A08F;
+}
+
+.mesa-filters__input:hover {
+  border-color: rgba(68, 39, 29, 0.2);
+}
+
+.mesa-filters__input:focus {
+  outline: none;
+  border-color: #D7AA70;
+  box-shadow: 0 0 0 3px rgba(215, 170, 112, 0.25);
+  background: #FFFFFF;
+}
+
+.mesa-filters__clear {
+  position: absolute;
+  right: 12px;
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: #B8A08F;
+  font-size: 0.85rem;
+  line-height: 1;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.mesa-filters__clear:hover {
+  background: rgba(68, 39, 29, 0.06);
+  color: #44271D;
+}
+
+.mesa-filters__clear:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(215, 170, 112, 0.4);
+}
+
+/* ========================================
+   SELECTS (Estado + Zona)
+   ======================================== */
+
+.mesa-filters__selects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 768px) {
+  .mesa-filters__selects {
+    margin-bottom: 0;
+    flex-wrap: nowrap;
+  }
+}
+
+.mesa-filters__select-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 160px;
+}
+
+.mesa-filters__select {
+  width: 100%;
+  padding: 12px 40px 12px 16px;
+  border: 1px solid rgba(68, 39, 29, 0.12);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: #44271D;
+  background: #FFF8F0;
+  appearance: none;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.mesa-filters__select:hover {
+  border-color: rgba(68, 39, 29, 0.2);
+}
+
+.mesa-filters__select:focus {
+  outline: none;
+  border-color: #D7AA70;
+  box-shadow: 0 0 0 3px rgba(215, 170, 112, 0.25);
+  background: #FFFFFF;
+}
+
+.mesa-filters__select-icon {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #B8A08F;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+/* ========================================
+   FOOTER: Contador + Limpiar
+   ======================================== */
+
+.mesa-filters__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(68, 39, 29, 0.06);
+}
+
+@media (min-width: 768px) {
+  .mesa-filters__footer {
+    padding-top: 0;
+    border-top: none;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+}
+
+.mesa-filters__contador {
+  font-size: 0.85rem;
+  color: #8B6B5A;
+  font-weight: 500;
+}
+
+.mesa-filters__btn-limpiar {
+  background: transparent;
+  border: 1px solid rgba(68, 39, 29, 0.15);
+  color: #5D3A2A;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+  white-space: nowrap;
+}
+
+.mesa-filters__btn-limpiar:hover {
+  background: rgba(68, 39, 29, 0.04);
+  border-color: rgba(68, 39, 29, 0.25);
+  color: #44271D;
+}
+
+.mesa-filters__btn-limpiar:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(215, 170, 112, 0.4);
+}
+
+/* ========================================
+   ESTADOS DE CARGA/VACÍO
+   ======================================== */
+
+.mesa-filters--cargando .mesa-filters__input,
+.mesa-filters--cargando .mesa-filters__select {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* Animación de entrada */
+@keyframes filtersEntrada {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mesa-filters {
+  animation: filtersEntrada 0.3s ease-out;
+}

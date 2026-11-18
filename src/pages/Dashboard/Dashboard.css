@@ -1,14 +1,41 @@
+/* =========================================
+   LAYOUT CON SIDEBAR FIJO
+========================================= */
+
+.dashboard-layout {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #FFF8F0;
+}
+
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  /* Margin-left para desktop (sidebar fijo 270px) */
+  margin-left: 270px;
+  transition: margin-left 0.3s ease;
+
+  /* Scroll vertical en el área de contenido */
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 
 /* =========================================
-   CONFIGURACIÓN GENERAL
+   CONFIGURACIÓN GENERAL (ancho fluido con max)
 ========================================= */
 
 .dashboard-page {
   width: 100%;
-  min-width: 0;
+  max-width: 1600px;          /* Aumentado de 1400px para menos espacio en blanco lateral */
+  margin: 0 auto;             /* Centrado horizontal en el espacio disponible */
   padding: 32px;
+  box-sizing: border-box;
   background: #FFF8F0;
-  min-height: calc(100vh - 75px);
+  /* flex-shrink: 0 eliminado para permitir que el contenido crezca */
+  min-height: 100%;           /* Ocupa al menos todo el alto del contenedor scrolleable */
 }
 
 /* =========================================
@@ -351,10 +378,18 @@
 ========================================= */
 
 @media (max-width: 768px) {
+  .dashboard-content {
+    margin-left: 0; /* Sin margin en mobile (sidebar es drawer) */
+    /* En mobile el contenido también debe ser scrolleable */
+    height: 100vh;
+    height: 100dvh;
+    overflow-y: auto;
+  }
+
   .dashboard-page {
     width: 100%;
     padding: 20px 15px;
-    min-height: calc(100dvh - 65px);
+    min-height: 100%;
   }
 
   .dashboard-welcome {
@@ -405,41 +440,41 @@
   }
 
   .stat-card p {
-    font-size: 10px;
+    font-size: 10px.
   }
 
   .dashboard-bottom {
     grid-template-columns: 1fr;
-    gap: 15px;
+    gap: 15px.
   }
 
   .dashboard-panel {
     padding: 18px 15px;
-    border-radius: 12px;
+    border-radius: 12px.
   }
 
   .panel-heading h3 {
-    font-size: 16px;
+    font-size: 16px.
   }
 
   .activity-item {
-    gap: 10px;
+    gap: 10px.
   }
 
   .activity-info strong {
-    font-size: 11px;
+    font-size: 11px.
   }
 
   .activity-info span {
-    font-size: 10px;
+    font-size: 10px.
   }
 
   .activity-time {
-    font-size: 9px;
+    font-size: 9px.
   }
 
   .tables-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr)).
   }
 }
 
@@ -449,36 +484,36 @@
 
 @media (max-width: 380px) {
   .dashboard-page {
-    padding: 16px 11px;
+    padding: 16px 11px.
   }
 
   .dashboard-stats {
-    gap: 9px;
+    gap: 9px.
   }
 
   .stat-card {
-    padding: 13px 10px;
+    padding: 13px 10px.
   }
 
   .stat-title {
-    font-size: 10px;
+    font-size: 10px.
   }
 
   .stat-card h2 {
-    font-size: 17px;
+    font-size: 17px.
   }
 
   .stat-icon {
-    width: 29px;
-    height: 29px;
-    font-size: 14px;
+    width: 29px.
+    height: 29px.
+    font-size: 14px.
   }
 
   .dashboard-panel {
-    padding: 15px 12px;
+    padding: 15px 12px.
   }
 
   .activity-time {
-    display: none;
+    display: none.
   }
 }
