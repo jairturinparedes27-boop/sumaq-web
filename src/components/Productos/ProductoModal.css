@@ -1,0 +1,446 @@
+/* src/components/Productos/ProductoModal.css */
+/* Modal para crear/editar productos */
+
+.producto-modal__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.producto-modal {
+  width: 100%;
+  max-width: 700px;
+  max-height: 90vh;
+  background: #FFFFFF;
+  border-radius: 16px;
+  box-shadow:
+    0 20px 40px rgba(68, 39, 29, 0.15),
+    0 8px 16px rgba(68, 39, 29, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.producto-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid #EADFD5;
+  background: #FAF6F1;
+}
+
+.producto-modal__titulo {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #44271D;
+}
+
+.producto-modal__cerrar {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: #8C8179;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.producto-modal__cerrar:hover {
+  background: rgba(68, 39, 29, 0.08);
+  color: #44271D;
+}
+
+.producto-modal__cerrar:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(215, 170, 112, 0.3);
+}
+
+/* ========================================
+   FORM
+======================================== */
+
+.producto-modal__form {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.producto-modal__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.producto-modal__campo--full {
+  grid-column: 1 / -1;
+}
+
+/* Campo */
+.producto-modal__campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.producto-modal__label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #44271D;
+}
+
+.producto-modal__requerido {
+  color: #C62828;
+}
+
+.producto-modal__input,
+.producto-modal__select,
+.producto-modal__textarea {
+  padding: 12px 14px;
+  border: 1px solid rgba(68, 39, 29, 0.15);
+  border-radius: 10px;
+  background: #FAF6F1;
+  font-size: 14px;
+  color: #44271D;
+  font-family: inherit;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.producto-modal__input:focus,
+.producto-modal__select:focus,
+.producto-modal__textarea:focus {
+  outline: none;
+  border-color: #D7AA70;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(215, 170, 112, 0.15);
+}
+
+.producto-modal__input::placeholder,
+.producto-modal__textarea::placeholder {
+  color: #A99A90;
+}
+
+.producto-modal__input--error,
+.producto-modal__select--error,
+.producto-modal__textarea--error {
+  border-color: #C62828;
+  background: #FDEDEC;
+}
+
+.producto-modal__input--error:focus,
+.producto-modal__select--error:focus,
+.producto-modal__textarea--error:focus {
+  box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.15);
+}
+
+.producto-modal__textarea {
+  resize: vertical;
+  min-height: 80px;
+  line-height: 1.5;
+}
+
+/* Input con símbolo de precio */
+.producto-modal__input-precio {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.producto-modal__precio-simbolo {
+  position: absolute;
+  left: 14px;
+  color: #8C8179;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.producto-modal__input-precio .producto-modal__input {
+  padding-left: 32px;
+}
+
+/* Preview imagen */
+.producto-modal__preview {
+  margin-top: 8px;
+  padding: 10px;
+  background: #FAF6F1;
+  border-radius: 8px;
+  border: 1px dashed rgba(68, 39, 29, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+}
+
+.producto-modal__preview img {
+  max-width: 100%;
+  max-height: 120px;
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+.producto-modal__preview-emoji {
+  font-size: 3rem;
+}
+
+/* Radio groups */
+.producto-modal__fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.producto-modal__legend {
+  font-size: 12px;
+  font-weight: 600;
+  color: #8C8179;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.producto-modal__radio-group {
+  display: flex;
+  gap: 16px;
+}
+
+.producto-modal__radio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #44271D;
+  user-select: none;
+}
+
+.producto-modal__radio input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.producto-modal__radio-custom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(68, 39, 29, 0.2);
+  border-radius: 50%;
+  background: #FAF6F1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.producto-modal__radio-custom::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #D7AA70;
+  opacity: 0;
+  transform: scale(0.3);
+  transition: all 0.2s;
+}
+
+.producto-modal__radio input:checked + .producto-modal__radio-custom {
+  border-color: #D7AA70;
+  background: #FFF8F0;
+}
+
+.producto-modal__radio input:checked + .producto-modal__radio-custom::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.producto-modal__radio input:focus-visible + .producto-modal__radio-custom {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(215, 170, 112, 0.3);
+}
+
+/* Ayuda y errores */
+.producto-modal__ayuda {
+  margin: 0;
+  font-size: 11px;
+  color: #A99A90;
+}
+
+.producto-modal__error {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #C62828;
+}
+
+.producto-modal__error-general {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  background: #FDEDEC;
+  border: 1px solid rgba(198, 40, 40, 0.2);
+  border-radius: 10px;
+  color: #C62828;
+  font-size: 13px;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.producto-modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 20px 24px;
+  border-top: 1px solid #EADFD5;
+  background: #FAF6F1;
+}
+
+.producto-modal__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.producto-modal__btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(215, 170, 112, 0.3);
+}
+
+.producto-modal__btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.producto-modal__btn--cancelar {
+  background: transparent;
+  color: #8B6B5A;
+  border: 1px solid rgba(68, 39, 29, 0.15);
+}
+
+.producto-modal__btn--cancelar:hover:not(:disabled) {
+  background: rgba(68, 39, 29, 0.04);
+  border-color: rgba(68, 39, 29, 0.25);
+  color: #44271D;
+}
+
+.producto-modal__btn--guardar {
+  background: linear-gradient(135deg, #44271D 0%, #5D3A2A 100%);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(68, 39, 29, 0.25);
+}
+
+.producto-modal__btn--guardar:hover:not(:disabled) {
+  background: linear-gradient(135deg, #5D3A2A 0%, #754D3A 100%);
+  box-shadow: 0 4px 16px rgba(68, 39, 29, 0.35);
+}
+
+.producto-modal__spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #FFFFFF;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 640px) {
+  .producto-modal {
+    max-height: 95vh;
+    border-radius: 16px 16px 0 0;
+    margin: auto 0 0 0;
+  }
+
+  .producto-modal__form {
+    padding: 20px 16px;
+  }
+
+  .producto-modal__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .producto-modal__footer {
+    flex-direction: column-reverse;
+    padding: 16px;
+  }
+
+  .producto-modal__btn {
+    width: 100%;
+  }
+
+  .producto-modal__radio-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* ========================================
+   IMPRESIÓN
+======================================== */
+
+@media print {
+  .producto-modal__overlay {
+    display: none !important;
+  }
+}
