@@ -1,0 +1,243 @@
+/* src/components/Cocina/CocinaHeader.css */
+/* Header del módulo Cocina (KDS) */
+
+.cocina-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  background: #FFFFFF;
+  border: 1px solid #EADFD5;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(68, 39, 29, 0.04);
+}
+
+.cocina-header__izquierda {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+  min-width: 300px;
+}
+
+.cocina-header__titulos {
+  flex-shrink: 0;
+}
+
+.cocina-header__titulo {
+  margin: 0 0 4px;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #44271D;
+  line-height: 1.2;
+  font-family: Georgia, serif;
+}
+
+.cocina-header__subtitulo {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #8B6B5A;
+  font-weight: 400;
+}
+
+/* Stats rápidas */
+.cocina-header__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.cocina-header__stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: #F8EFE5;
+  border-radius: 12px;
+  border: 1px solid rgba(68, 39, 29, 0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cocina-header__stat:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(68, 39, 29, 0.08);
+}
+
+.cocina-header__stat-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.cocina-header__stat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cocina-header__stat-valor {
+  font-family: 'Monospace', monospace;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #44271D;
+  line-height: 1;
+}
+
+.cocina-header__stat-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #8B6B5A;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* Variantes de color */
+.cocina-header__stat--pendientes .cocina-header__stat-valor { color: #E65100; }
+.cocina-header__stat--preparacion .cocina-header__stat-valor { color: #1565C0; }
+.cocina-header__stat--listos .cocina-header__stat-valor { color: #2E7D32; }
+
+/* Derecha: reloj + botón reset */
+.cocina-header__derecha {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.cocina-header__reloj {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  padding: 8px 16px;
+  background: #44271D;
+  border-radius: 12px;
+  color: #FFFFFF;
+  font-family: 'Monospace', monospace;
+}
+
+.cocina-header__fecha {
+  font-size: 11px;
+  color: #D6C3B3;
+  text-transform: capitalize;
+}
+
+.cocina-header__hora {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.cocina-header__btn-reset {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(68, 39, 29, 0.15);
+  border-radius: 12px;
+  background: #FAF6F1;
+  color: #8B6B5A;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  opacity: 0.6;
+}
+
+.cocina-header__btn-reset:hover {
+  opacity: 1;
+  background: #F0E8E1;
+  border-color: rgba(68, 39, 29, 0.25);
+  color: #44271D;
+  transform: rotate(180deg);
+}
+
+.cocina-header__btn-reset:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(215, 170, 112, 0.3);
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 900px) {
+  .cocina-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .cocina-header__izquierda {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    min-width: 0;
+  }
+
+  .cocina-header__stats {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .cocina-header__stat {
+    flex: 1;
+    justify-content: center;
+    min-width: 0;
+    padding: 8px 12px;
+  }
+
+  .cocina-header__stat-valor {
+    font-size: 1.1rem;
+  }
+
+  .cocina-header__derecha {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .cocina-header__reloj {
+    padding: 6px 12px;
+  }
+
+  .cocina-header__hora {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cocina-header__titulo {
+    font-size: 1.5rem;
+  }
+
+  .cocina-header__stats {
+    gap: 8px;
+  }
+
+  .cocina-header__stat {
+    padding: 6px 10px;
+    gap: 6px;
+  }
+
+  .cocina-header__stat-icon {
+    font-size: 1rem;
+  }
+
+  .cocina-header__stat-valor {
+    font-size: 1rem;
+  }
+}
+
+/* ========================================
+   IMPRESIÓN
+======================================== */
+
+@media print {
+  .cocina-header {
+    display: none !important;
+  }
+}

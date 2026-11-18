@@ -1,2 +1,319 @@
 /* src/pages/Cocina/Cocina.css */
-@import '../Pedidos/Pedidos.css';
+/* Estilos para la página principal del módulo Cocina (KDS) */
+
+/* ========================================
+   LAYOUT CON SIDEBAR FIJO
+======================================== */
+
+.cocina-layout {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #FFF8F0;
+}
+
+.cocina-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  margin-left: 270px;
+  transition: margin-left 0.3s ease;
+
+  /* Scroll vertical en el área de contenido */
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ========================================
+   CONTENEDOR PRINCIPAL
+======================================== */
+
+.cocina-page {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #FFF8F0;
+  min-height: 100%;
+}
+
+/* Loading */
+.cocina-page__loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 16px;
+  color: #8B6B5A;
+}
+
+.cocina-page__spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(68, 39, 29, 0.1);
+  border-top-color: #D7AA70;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Error */
+.cocina-page__error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  background: #FDEDEC;
+  border: 1px solid rgba(198, 40, 40, 0.2);
+  border-radius: 10px;
+  color: #C62828;
+  font-size: 0.875rem;
+  margin-bottom: 20px;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================================
+   GRID DE PEDIDOS (KDS)
+======================================== */
+
+.cocina-page__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* Desktop: 2 columnas a partir de 900px */
+@media (min-width: 900px) {
+  .cocina-page__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop grande: 3 columnas a partir de 1400px */
+@media (min-width: 1400px) {
+  .cocina-page__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Estado vacío */
+.cocina-page__vacio {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+  text-align: center;
+  background: #FFFFFF;
+  border-radius: 16px;
+  border: 2px dashed rgba(68, 39, 29, 0.1);
+  min-height: 300px;
+}
+
+.cocina-page__vacio-icon {
+  font-size: 4rem;
+  opacity: 0.3;
+  margin-bottom: 16px;
+}
+
+.cocina-page__vacio h3 {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+  color: #44271D;
+}
+
+.cocina-page__vacio p {
+  margin: 0 0 24px;
+  color: #8B6B5A;
+  max-width: 300px;
+}
+
+.cocina-page__btn-limpiar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #44271D 0%, #5D3A2A 100%);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(68, 39, 29, 0.25);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+.cocina-page__btn-limpiar:hover {
+  background: linear-gradient(135deg, #5D3A2A 0%, #754D3A 100%);
+  box-shadow: 0 4px 16px rgba(68, 39, 29, 0.35);
+  transform: translateY(-1px);
+}
+
+.cocina-page__btn-limpiar:active {
+  transform: scale(0.98);
+}
+
+/* ========================================
+   BARRA DE CONTROL INFERIOR (Mobile)
+======================================== */
+
+.cocina-page__control-bar {
+  display: none;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px 20px;
+  margin: 20px -20px -20px;
+  background: #FFFFFF;
+  border-top: 1px solid #EADFD5;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 -2px 12px rgba(68, 39, 29, 0.05);
+}
+
+.cocina-page__control-grupo {
+  display: flex;
+  align-items: center;
+}
+
+.cocina-page__control-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #44271D;
+  user-select: none;
+}
+
+.cocina-page__control-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: #D7AA70;
+  cursor: pointer;
+}
+
+.cocina-page__control-texto {
+  font-weight: 500;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 768px) {
+  .cocina-content {
+    margin-left: 0; /* Sin sidebar en mobile (es drawer) */
+  }
+
+  .cocina-page {
+    padding: 16px;
+    padding-bottom: 100px; /* Espacio para control bar */
+  }
+
+  .cocina-page__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Mostrar barra de control en mobile */
+  .cocina-page__control-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    margin: 0;
+    border-radius: 0;
+    padding: 12px 16px;
+    background: #FFFFFF;
+    border-top: 1px solid #EADFD5;
+    box-shadow: 0 -4px 20px rgba(68, 39, 29, 0.1);
+  }
+}
+
+@media (max-width: 480px) {
+  .cocina-page {
+    padding: 12px;
+    padding-bottom: 100px;
+  }
+
+  .cocina-page__vacio {
+    padding: 40px 16px;
+    min-height: 250px;
+  }
+
+  .cocina-page__vacio-icon {
+    font-size: 3rem;
+  }
+
+  .cocina-page__vacio h3 {
+    font-size: 1.1rem;
+  }
+
+  .cocina-page__vacio p {
+    font-size: 0.9rem;
+  }
+}
+
+/* ========================================
+   ANIMACIONES DE ENTRADA
+======================================== */
+
+@keyframes paginaEntrada {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cocina-page > * {
+  animation: paginaEntrada 0.4s ease-out backwards;
+}
+
+.cocina-page > *:nth-child(1) { animation-delay: 0.05s; }  /* Header */
+.cocina-page > *:nth-child(2) { animation-delay: 0.1s; }   /* Filters */
+.cocina-page > *:nth-child(3) { animation-delay: 0.15s; }  /* Grid */
+
+/* ========================================
+   IMPRESIÓN - Modo cocina
+======================================== */
+
+@media print {
+  .cocina-layout,
+  .cocina-content,
+  .cocina-page {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #FFFFFF !important;
+    max-width: none !important;
+  }
+
+  .cocina-page__grid {
+    display: block !important;
+  }
+
+  .cocina-page__vacio {
+    display: none !important;
+  }
+}

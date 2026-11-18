@@ -1,0 +1,389 @@
+/* src/components/Cocina/CocinaFilters.css */
+/* Filtros para Kitchen Display System */
+
+.cocina-filters {
+  background: #FFFFFF;
+  border: 1px solid #EADFD5;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(68, 39, 29, 0.04);
+}
+
+/* ========================================
+   FILA PRINCIPAL DE FILTROS
+======================================== */
+
+.cocina-filters__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.cocina-filters__row--principal {
+  gap: 16px;
+}
+
+/* Búsqueda */
+.cocina-filters__busqueda {
+  flex: 1;
+  min-width: 200px;
+  max-width: 400px;
+}
+
+.cocina-filters__label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #8C8179;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.cocina-filters__input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cocina-filters__input-icon {
+  position: absolute;
+  left: 12px;
+  font-size: 16px;
+  color: #A99A90;
+  pointer-events: none;
+}
+
+.cocina-filters__input {
+  width: 100%;
+  padding: 12px 16px 12px 44px;
+  border: 1px solid rgba(68, 39, 29, 0.15);
+  border-radius: 10px;
+  background: #FAF6F1;
+  font-size: 14px;
+  color: #44271D;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.cocina-filters__input:focus {
+  outline: none;
+  border-color: #D7AA70;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(215, 170, 112, 0.15);
+}
+
+.cocina-filters__input::placeholder {
+  color: #A99A90;
+}
+
+.cocina-filters__clear {
+  position: absolute;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: #A99A90;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.2s, color 0.2s;
+}
+
+.cocina-filters__clear:hover {
+  background: rgba(68, 39, 29, 0.08);
+  color: #44271D;
+}
+
+/* Selects */
+.cocina-filters__select-group {
+  min-width: 180px;
+  flex: 0 0 auto;
+}
+
+.cocina-filters__select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid rgba(68, 39, 29, 0.15);
+  border-radius: 10px;
+  background: #FAF6F1;
+  font-size: 13px;
+  font-weight: 500;
+  color: #44271D;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238C8179' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 40px;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.cocina-filters__select:focus {
+  outline: none;
+  border-color: #D7AA70;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(215, 170, 112, 0.15);
+}
+
+/* Checkbox */
+.cocina-filters__checkbox-group {
+  flex: 0 0 auto;
+}
+
+.cocina-filters__checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #44271D;
+  user-select: none;
+}
+
+.cocina-filters__checkbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cocina-filters__checkbox-custom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(68, 39, 29, 0.2);
+  border-radius: 5px;
+  background: #FAF6F1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.cocina-filters__checkbox-custom::after {
+  content: '✓';
+  font-size: 12px;
+  font-weight: bold;
+  color: #FFFFFF;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.2s;
+}
+
+.cocina-filters__checkbox:checked + .cocina-filters__checkbox-custom {
+  background: #D7AA70;
+  border-color: #D7AA70;
+}
+
+.cocina-filters__checkbox:checked + .cocina-filters__checkbox-custom::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.cocina-filters__checkbox:focus-visible + .cocina-filters__checkbox-custom {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(215, 170, 112, 0.3);
+}
+
+.cocina-filters__checkbox-text {
+  font-weight: 500;
+}
+
+/* ========================================
+   RESUMEN Y CONTADORES
+======================================== */
+
+.cocina-filters__resumen {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(68, 39, 29, 0.08);
+}
+
+.cocina-filters__contadores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.cocina-filters__contador {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 14px;
+  background: #F8EFE5;
+  border-radius: 10px;
+  min-width: 70px;
+  transition: transform 0.2s;
+}
+
+.cocina-filters__contador:hover {
+  transform: translateY(-1px);
+}
+
+.cocina-filters__contador-valor {
+  font-family: 'Monospace', monospace;
+  font-size: 18px;
+  font-weight: 700;
+  color: #44271D;
+  line-height: 1;
+}
+
+.cocina-filters__contador-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: #8C8179;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* Variantes de contadores */
+.cocina-filters__contador--activos .cocina-filters__contador-valor { color: #1565C0; }
+.cocina-filters__contador--demorados .cocina-filters__contador-valor { color: #F57F17; }
+.cocina-filters__contador--urgentes .cocina-filters__contador-valor { color: #C62828; animation: parpadeo-contador 1s ease-in-out infinite; }
+.cocina-filters__contador--mostrados .cocina-filters__contador-valor { color: #587A4C; }
+
+@keyframes parpadeo-contador {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Botón limpiar */
+.cocina-filters__btn-limpiar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border: 1px solid rgba(68, 39, 29, 0.15);
+  border-radius: 10px;
+  background: transparent;
+  color: #8B6B5A;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.cocina-filters__btn-limpiar:hover {
+  background: rgba(68, 39, 29, 0.04);
+  border-color: rgba(68, 39, 29, 0.25);
+  color: #44271D;
+}
+
+.cocina-filters__btn-limpiar:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(215, 170, 112, 0.3);
+}
+
+/* Alerta de nuevo pedido */
+.cocina-filters__alerta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+  border: 1px solid #FFB74D;
+  border-radius: 10px;
+  color: #E65100;
+  font-size: 13px;
+  font-weight: 600;
+  animation: slideInAlerta 0.3s ease-out;
+}
+
+.cocina-filters__alerta-icon {
+  font-size: 16px;
+  animation: rebote 0.5s ease-in-out infinite;
+}
+
+@keyframes slideInAlerta {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rebote {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 900px) {
+  .cocina-filters__row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cocina-filters__busqueda {
+    max-width: none;
+  }
+
+  .cocina-filters__select-group {
+    min-width: 0;
+  }
+
+  .cocina-filters__resumen {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cocina-filters__contadores {
+    justify-content: space-between;
+  }
+
+  .cocina-filters__contador {
+    flex: 1;
+    min-width: 0;
+    padding: 6px 10px;
+  }
+
+  .cocina-filters__contador-valor {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cocina-filters {
+    padding: 16px;
+  }
+
+  .cocina-filters__contadores {
+    gap: 8px;
+  }
+
+  .cocina-filters__contador {
+    padding: 6px 8px;
+    min-width: 60px;
+  }
+
+  .cocina-filters__contador-label {
+    font-size: 9px;
+  }
+
+  .cocina-filters__btn-limpiar {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ========================================
+   IMPRESIÓN
+======================================== */
+
+@media print {
+  .cocina-filters {
+    display: none !important;
+  }
+}
