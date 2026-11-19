@@ -1,0 +1,280 @@
+/* src/components/Insumos/InsumoTable.css */
+
+.insumo-table__wrapper {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(68, 39, 29, 0.08);
+  background: #FFFFFF;
+  box-shadow:
+    0 2px 8px rgba(68, 39, 29, 0.04),
+    0 1px 3px rgba(68, 39, 29, 0.03);
+}
+
+.insumo-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  min-width: 1100px;
+}
+
+.insumo-table__th,
+.insumo-table__td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid rgba(68, 39, 29, 0.06);
+}
+
+.insumo-table__th {
+  background: #FFF8F0;
+  font-weight: 600;
+  color: #44271D;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.insumo-table__td {
+  color: #44271D;
+  vertical-align: middle;
+}
+
+.insumo-table__tr:hover .insumo-table__td {
+  background: rgba(215, 170, 112, 0.03);
+}
+
+.insumo-table__tr--inactivo .insumo-table__td {
+  opacity: 0.5;
+  color: #8B6B5A;
+}
+
+.insumo-table__tr--agotado .insumo-table__td {
+  background: #FEF2F2;
+}
+
+.insumo-table__tr--agotado:hover .insumo-table__td {
+  background: #FEE2E2;
+}
+
+/* Código */
+.insumo-table__codigo {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.8rem;
+  background: #FFF8F0;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: #44271D;
+  border: 1px solid rgba(68, 39, 29, 0.1);
+}
+
+/* Nombre */
+.insumo-table__nombre-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.insumo-table__nombre {
+  font-weight: 500;
+  color: #44271D;
+}
+
+.insumo-table__unidad {
+  font-size: 0.7rem;
+  color: #8B6B5A;
+  text-transform: uppercase;
+}
+
+/* Categoría */
+.insumo-table__categoria {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+/* Stock */
+.insumo-table__stock {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #44271D;
+}
+
+.insumo-table__stock--alerta {
+  color: #C62828;
+}
+
+.insumo-table__stock-min {
+  font-size: 0.8rem;
+  color: #8B6B5A;
+}
+
+/* Estado Stock Badge */
+.insumo-table__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+.insumo-table__badge.stock-ok {
+  background: #E8F5E9;
+  color: #2E7D32;
+  border-color: #81C784;
+}
+
+.insumo-table__badge.stock-bajo {
+  background: #FFF8E1;
+  color: #F57F17;
+  border-color: #FFD54F;
+}
+
+.insumo-table__badge.stock-critico {
+  background: #FBE9E7;
+  color: #C62828;
+  border-color: #EF9A9A;
+}
+
+/* Precio */
+.insumo-table__precio {
+  font-weight: 600;
+  color: #2E7D32;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+}
+
+/* Proveedor */
+.insumo-table__proveedor {
+  font-size: 0.8rem;
+  color: #44271D;
+  max-width: 180px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Acciones */
+.insumo-table__td--acciones {
+  white-space: nowrap;
+}
+
+.insumo-table__acciones {
+  display: inline-flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.insumo-table__btn {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.15s ease;
+  color: #8B6B5A;
+}
+
+.insumo-table__btn:hover {
+  background: rgba(68, 39, 29, 0.08);
+  transform: scale(1.1);
+}
+
+.insumo-table__btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #D7AA70;
+}
+
+.insumo-table__btn--activo {
+  background: #E8F5E9;
+  color: #2E7D32;
+}
+
+.insumo-table__btn--activo:hover {
+  background: #C8E6C9;
+}
+
+.insumo-table__btn--eliminar:hover {
+  background: #FDEDEC;
+  color: #C62828;
+}
+
+/* Vacío */
+.insumo-table__vacio {
+  padding: 60px 20px !important;
+}
+
+.insumo-table__vacio-contenido {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: #8B6B5A;
+}
+
+.insumo-table__vacio-contenido span {
+  font-size: 3rem;
+  opacity: 0.4;
+}
+
+.insumo-table__vacio-contenido p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .insumo-table {
+    min-width: 1000px;
+  }
+
+  .insumo-table__th,
+  .insumo-table__td {
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .insumo-table__wrapper {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    margin: 0 -16px;
+  }
+
+  .insumo-table {
+    font-size: 0.8rem;
+  }
+
+  .insumo-table__th,
+  .insumo-table__td {
+    padding: 8px 10px;
+  }
+
+  .insumo-table__acciones {
+    gap: 4px;
+  }
+
+  .insumo-table__btn {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+  }
+}

@@ -1,2 +1,418 @@
 /* src/pages/Insumos/Insumos.css */
-@import '../Pedidos/Pedidos.css';
+/* Estilos para la página principal del módulo Insumos e Inventario */
+
+/* ========================================
+   LAYOUT CON SIDEBAR FIJO
+======================================== */
+
+.insumos-layout {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #FFF8F0;
+}
+
+.insumos-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  margin-left: 270px;
+  transition: margin-left 0.3s ease;
+
+  /* Scroll vertical en el área de contenido */
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ========================================
+   CONTENEDOR PRINCIPAL
+======================================== */
+
+.insumos-page {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 24px;
+  box-sizing: border-box;
+  background: #FFF8F0;
+  min-height: 100%;
+}
+
+/* Loading */
+.insumos-page__loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 16px;
+  color: #8B6B5A;
+}
+
+.insumos-page__spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(68, 39, 29, 0.1);
+  border-top-color: #D7AA70;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ========================================
+   HEADER DEL MÓDULO
+======================================== */
+
+.insumos-page__header {
+  margin-bottom: 8px;
+}
+
+.insumos-page__header-main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.insumos-page__titulos {
+  flex: 1;
+  min-width: 200px;
+}
+
+.insumos-page__titulo {
+  margin: 0 0 4px;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #44271D;
+  line-height: 1.2;
+  font-family: Georgia, serif;
+}
+
+.insumos-page__subtitulo {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #8B6B5A;
+  font-weight: 400;
+}
+
+/* Botones del header */
+.insumos-page__acciones {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.insumos-page__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+
+.insumos-page__btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(215, 170, 112, 0.4);
+}
+
+.insumos-page__btn:active {
+  transform: scale(0.98);
+}
+
+.insumos-page__btn--primaria {
+  background: linear-gradient(135deg, #44271D 0%, #5D3A2A 100%);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(68, 39, 29, 0.25);
+}
+
+.insumos-page__btn--primaria:hover {
+  background: linear-gradient(135deg, #5D3A2A 0%, #754D3A 100%);
+  box-shadow: 0 4px 16px rgba(68, 39, 29, 0.35);
+}
+
+.insumos-page__btn--secundaria {
+  background: transparent;
+  color: #8B6B5A;
+  border: 1px solid rgba(68, 39, 29, 0.15);
+  padding: 12px;
+}
+
+.insumos-page__btn--secundaria:hover {
+  background: rgba(68, 39, 29, 0.04);
+  border-color: rgba(68, 39, 29, 0.25);
+  color: #44271D;
+}
+
+.insumos-page__btn--alerta {
+  background: #FFF3E0;
+  color: #E65100;
+  border: 1px solid rgba(230, 81, 0, 0.2);
+  padding: 12px 16px;
+  animation: pulse 2s infinite;
+}
+
+.insumos-page__btn--alerta:hover {
+  background: #FFE0B2;
+  border-color: #E65100;
+  color: #BF360C;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(230, 81, 0, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(230, 81, 0, 0); }
+}
+
+/* ========================================
+   RESUMEN DE ESTADOS
+======================================== */
+
+.insumos-page__resumen {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+@media (min-width: 480px) {
+  .insumos-page__resumen {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .insumos-page__resumen {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+.insumos-page__resumen-item {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow:
+    0 2px 8px rgba(68, 39, 29, 0.06),
+    0 1px 3px rgba(68, 39, 29, 0.04);
+  border: 1px solid rgba(68, 39, 29, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.insumos-page__resumen-item:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 16px rgba(68, 39, 29, 0.1),
+    0 2px 6px rgba(68, 39, 29, 0.06);
+}
+
+.insumos-page__resumen-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.insumos-page__resumen-valor {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #44271D;
+  line-height: 1.2;
+}
+
+.insumos-page__resumen-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #8B6B5A;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* Colores por tipo */
+.insumos-page__resumen--activos .insumos-page__resumen-valor { color: #2E7D32; }
+.insumos-page__resumen--criticos .insumos-page__resumen-valor { color: #C62828; }
+.insumos-page__resumen--bajos .insumos-page__resumen-valor { color: #F57F17; }
+.insumos-page__resumen--valor .insumos-page__resumen-valor { color: #1565C0; }
+
+/* ========================================
+   ERROR
+======================================== */
+
+.insumos-page__error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  background: #FDEDEC;
+  border: 1px solid rgba(198, 40, 40, 0.2);
+  border-radius: 10px;
+  color: #C62828;
+  font-size: 0.875rem;
+  margin-bottom: 20px;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================================
+   VISTA
+======================================== */
+
+.insumos-page__vista {
+  animation: paginaEntrada 0.4s ease-out backwards;
+  animation-delay: 0.15s;
+}
+
+@keyframes paginaEntrada {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 768px) {
+  .insumos-content {
+    margin-left: 0; /* Sin sidebar en mobile (es drawer) */
+  }
+
+  .insumos-page {
+    padding: 16px;
+  }
+
+  .insumos-page__header-main {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .insumos-page__acciones {
+    justify-content: stretch;
+  }
+
+  .insumos-page__btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .insumos-page__btn--secundaria,
+  .insumos-page__btn--alerta {
+    flex: 0 0 auto;
+  }
+
+  .insumos-page__titulo {
+    font-size: 1.5rem;
+  }
+
+  .insumos-page__resumen {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .insumos-page__resumen-item {
+    padding: 12px;
+  }
+
+  .insumos-page__resumen-valor {
+    font-size: 1.25rem;
+  }
+
+  .insumos-page__resumen-icon {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .insumos-page {
+    padding: 12px;
+  }
+
+  .insumos-page__header-main {
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .insumos-page__acciones {
+    gap: 8px;
+  }
+
+  .insumos-page__btn {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+
+  .insumos-page__resumen {
+    gap: 8px;
+  }
+
+  .insumos-page__resumen-item {
+    padding: 10px 8px;
+    gap: 8px;
+  }
+
+  .insumos-page__resumen-valor {
+    font-size: 1.1rem;
+  }
+
+  .insumos-page__resumen-label {
+    font-size: 0.65rem;
+  }
+}
+
+/* ========================================
+   ANIMACIONES DE ENTRADA
+======================================== */
+
+.insumos-page > * {
+  animation: paginaEntrada 0.4s ease-out backwards;
+}
+
+.insumos-page__header { animation-delay: 0.05s; }
+.insumos-page__resumen { animation-delay: 0.1s; }
+.insumos-page__vista { animation-delay: 0.15s; }
+
+/* ========================================
+   IMPRESIÓN
+======================================== */
+
+@media print {
+  .insumos-layout,
+  .insumos-content,
+  .insumos-page {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #FFFFFF !important;
+    max-width: none !important;
+  }
+
+  .insumos-page__acciones,
+  .insumos-page__vacio button {
+    display: none !important;
+  }
+}

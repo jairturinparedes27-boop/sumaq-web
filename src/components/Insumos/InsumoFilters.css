@@ -1,0 +1,301 @@
+/* src/components/Insumos/InsumoFilters.css */
+
+.insumo-filters {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(68, 39, 29, 0.08);
+  box-shadow:
+    0 2px 8px rgba(68, 39, 29, 0.04),
+    0 1px 3px rgba(68, 39, 29, 0.03);
+}
+
+/* ===== FILA PRINCIPAL ===== */
+.insumo-filters__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 480px) {
+  .insumo-filters__row {
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr auto;
+    align-items: end;
+  }
+}
+
+@media (min-width: 900px) {
+  .insumo-filters__row {
+    grid-template-columns: 2.5fr 1.2fr 1fr 1fr 1.2fr auto;
+  }
+}
+
+/* Búsqueda */
+.insumo-filters__busqueda {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.insumo-filters__label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #8B6B5A;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.insumo-filters__input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.insumo-filters__input-icon {
+  position: absolute;
+  left: 14px;
+  font-size: 1rem;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.insumo-filters__input {
+  width: 100%;
+  padding: 12px 14px 12px 44px;
+  border: 1px solid rgba(68, 39, 29, 0.15);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: #44271D;
+  background: #FFFFFF;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.insumo-filters__input:focus {
+  outline: none;
+  border-color: #D7AA70;
+  box-shadow: 0 0 0 3px rgba(215, 170, 112, 0.2);
+}
+
+.insumo-filters__input::placeholder {
+  color: #B89B8A;
+}
+
+.insumo-filters__clear {
+  position: absolute;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: #8B6B5A;
+  transition: all 0.15s ease;
+}
+
+.insumo-filters__clear:hover {
+  background: rgba(68, 39, 29, 0.06);
+  color: #44271D;
+}
+
+/* Selects */
+.insumo-filters__select-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.insumo-filters__select {
+  width: 100%;
+  padding: 12px 40px 12px 14px;
+  border: 1px solid rgba(68, 39, 29, 0.15);
+  border-radius: 10px;
+  font-size: 0.85rem;
+  color: #44271D;
+  background: #FFFFFF url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238B6B5A' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center;
+  background-size: 16px;
+  appearance: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.insumo-filters__select:focus {
+  outline: none;
+  border-color: #D7AA70;
+  box-shadow: 0 0 0 3px rgba(215, 170, 112, 0.2);
+}
+
+/* Vista Toggle */
+.insumo-filters__vista-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.insumo-filters__vista-toggle {
+  display: inline-flex;
+  background: #FFF8F0;
+  border-radius: 8px;
+  padding: 4px;
+  border: 1px solid rgba(68, 39, 29, 0.1);
+}
+
+.insumo-filters__vista-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: #8B6B5A;
+  transition: all 0.15s ease;
+}
+
+.insumo-filters__vista-btn:hover {
+  color: #44271D;
+  background: rgba(68, 39, 29, 0.05);
+}
+
+.insumo-filters__vista-btn--active {
+  background: #44271D;
+  color: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(68, 39, 29, 0.25);
+}
+
+.insumo-filters__vista-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #D7AA70;
+}
+
+/* ===== RESUMEN Y CONTADORES ===== */
+.insumo-filters__resumen {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(68, 39, 29, 0.08);
+}
+
+.insumo-filters__contadores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.insumo-filters__contador {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 16px;
+  background: #FFF8F0;
+  border-radius: 10px;
+  border: 1px solid rgba(68, 39, 29, 0.08);
+  min-width: 70px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.insumo-filters__contador:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(68, 39, 29, 0.1);
+}
+
+.insumo-filters__contador-valor {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #44271D;
+  line-height: 1.2;
+}
+
+.insumo-filters__contador-label {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: #8B6B5A;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* Colores por tipo */
+.insumo-filters__contador--activos .insumo-filters__contador-valor { color: #2E7D32; }
+.insumo-filters__contador--criticos .insumo-filters__contador-valor { color: #C62828; }
+.insumo-filters__contador--bajos .insumo-filters__contador-valor { color: #F57F17; }
+.insumo-filters__contador--valor .insumo-filters__contador-valor { color: #1565C0; }
+
+/* Botón limpiar */
+.insumo-filters__btn-limpiar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid rgba(198, 40, 40, 0.3);
+  border-radius: 10px;
+  background: #FDEDEC;
+  color: #C62828;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.insumo-filters__btn-limpiar:hover {
+  background: #FCE4EC;
+  border-color: #C62828;
+}
+
+.insumo-filters__btn-limpiar:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .insumo-filters {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .insumo-filters__row {
+    grid-template-columns: 1fr;
+  }
+
+  .insumo-filters__resumen {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .insumo-filters__contadores {
+    justify-content: space-between;
+  }
+
+  .insumo-filters__contador {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 10px;
+  }
+
+  .insumo-filters__contador-valor {
+    font-size: 1.1rem;
+  }
+
+  .insumo-filters__contador-label {
+    font-size: 0.6rem;
+  }
+
+  .insumo-filters__btn-limpiar {
+    width: 100%;
+    justify-content: center;
+  }
+}

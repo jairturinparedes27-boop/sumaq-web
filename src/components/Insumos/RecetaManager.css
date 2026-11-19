@@ -1,0 +1,276 @@
+/* src/components/Insumos/RecetaManager.css */
+
+.receta-manager {
+  max-width: 900px;
+  max-height: 90vh;
+}
+
+.receta-manager__lista {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.receta-manager__filtros {
+  display: flex;
+  gap: 16px;
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(68, 39, 29, 0.1);
+  flex-wrap: wrap;
+  align-items: end;
+}
+
+.receta-manager__busqueda {
+  flex: 1;
+  min-width: 250px;
+}
+
+.receta-manager__categoria {
+  min-width: 200px;
+}
+
+.receta-manager__tabla-wrapper {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 24px 24px;
+}
+
+.receta-manager__tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.receta-manager__tabla th,
+.receta-manager__tabla td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid rgba(68, 39, 29, 0.06);
+}
+
+.receta-manager__tabla th {
+  background: #FFF8F0;
+  font-weight: 600;
+  color: #44271D;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.receta-manager__tabla tbody tr:hover td {
+  background: rgba(215, 170, 112, 0.03);
+}
+
+.receta-manager__tabla code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.8rem;
+  background: #FFF8F0;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: #44271D;
+}
+
+.receta-manager__ingredientes-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.receta-manager__ing-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  background: #FFF8F0;
+  border: 1px solid rgba(68, 39, 29, 0.1);
+  border-radius: 20px;
+  font-size: 0.7rem;
+  color: #44271D;
+  white-space: nowrap;
+}
+
+.receta-manager__ing-tag--mas {
+  background: #E8F5E9;
+  color: #2E7D32;
+  font-weight: 600;
+}
+
+.receta-manager__acciones {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.receta-manager__btn {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.15s ease;
+}
+
+.receta-manager__btn:hover {
+  background: rgba(68, 39, 29, 0.08);
+  transform: scale(1.1);
+}
+
+.receta-manager__btn--eliminar:hover {
+  background: #FDEDEC;
+  color: #C62828;
+}
+
+.receta-manager__vacio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  gap: 16px;
+  color: #8B6B5A;
+  text-align: center;
+}
+
+.receta-manager__vacio span {
+  font-size: 3rem;
+  opacity: 0.4;
+}
+
+.receta-manager__vacio p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.receta-manager__footer-acciones {
+  padding: 16px 24px;
+  border-top: 1px solid rgba(68, 39, 29, 0.1);
+  text-align: right;
+}
+
+/* Formulario receta */
+.receta-manager .insumo-modal__producto-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #FFF8F0;
+  border-radius: 10px;
+  border: 1px solid rgba(68, 39, 29, 0.1);
+}
+
+.receta-manager .insumo-modal__producto-info code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  background: rgba(68, 39, 29, 0.1);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.receta-manager .insumo-modal__ingredientes-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.receta-manager .insumo-modal__btn--secundaria {
+  background: transparent;
+  color: #8B6B5A;
+  border: 1px solid rgba(68, 39, 29, 0.15);
+}
+
+.receta-manager .insumo-modal__btn--secundaria:hover {
+  background: rgba(68, 39, 29, 0.04);
+  color: #44271D;
+}
+
+.receta-manager .insumo-modal__btn--sm {
+  padding: 8px 16px;
+  font-size: 0.8rem;
+}
+
+.receta-manager .insumo-modal__vacio-ingredientes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 32px;
+  text-align: center;
+  background: #FFF8F0;
+  border: 2px dashed rgba(68, 39, 29, 0.15);
+  border-radius: 12px;
+  color: #8B6B5A;
+}
+
+.receta-manager .insumo-modal__ingredientes-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.receta-manager .insumo-modal__ingrediente-fila {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 12px;
+  align-items: end;
+  padding: 16px;
+  background: #FFF8F0;
+  border: 1px solid rgba(68, 39, 29, 0.1);
+  border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+  .receta-manager .insumo-modal__ingrediente-fila {
+    grid-template-columns: 1fr;
+  }
+}
+
+.receta-manager .insumo-modal__ingrediente-select {
+  flex: 1;
+}
+
+.receta-manager .insumo-modal__ingrediente-cantidad {
+  width: 140px;
+}
+
+.receta-manager .insumo-modal__btn-eliminar {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: #C62828;
+  transition: all 0.15s ease;
+}
+
+.receta-manager .insumo-modal__btn-eliminar:hover {
+  background: #FDEDEC;
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .receta-manager__filtros {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .receta-manager__busqueda,
+  .receta-manager__categoria {
+    width: 100%;
+  }
+
+  .receta-manager__tabla-wrapper {
+    padding: 0 16px 16px;
+  }
+}

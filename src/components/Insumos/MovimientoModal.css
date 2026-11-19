@@ -1,0 +1,67 @@
+/* src/components/Insumos/MovimientoModal.css */
+
+.movimiento-modal {
+  max-width: 600px;
+}
+
+.movimiento-modal__insumo-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 24px;
+  background: #FFF8F0;
+  border-bottom: 1px solid rgba(68, 39, 29, 0.1);
+}
+
+.movimiento-modal__insumo-codigo {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.8rem;
+  background: rgba(68, 39, 29, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: #44271D;
+  display: inline-block;
+  width: fit-content;
+}
+
+.movimiento-modal__insumo-nombre {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #44271D;
+}
+
+.movimiento-modal__insumo-stock {
+  font-size: 0.85rem;
+  color: #8B6B5A;
+}
+
+.movimiento-modal__alerta-stock-negativo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  border-radius: 8px;
+  color: #C62828;
+  font-size: 0.85rem;
+}
+
+.movimiento-modal__alerta-stock-negativo::before {
+  content: '⚠';
+  font-size: 1rem;
+}
+
+/* Botón salida */
+.insumo-modal__btn--salida {
+  background: linear-gradient(135deg, #C62828 0%, #D84315 100%) !important;
+}
+
+.insumo-modal__btn--salida:hover:not(:disabled) {
+  background: linear-gradient(135deg, #B71C1C 0%, #C62828 100%) !important;
+}
+
+/* Overlay anidado para confirmación */
+.insumo-modal__overlay .insumo-modal__overlay {
+  backdrop-filter: blur(8px);
+}
