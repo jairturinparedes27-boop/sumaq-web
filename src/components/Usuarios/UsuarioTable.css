@@ -1,0 +1,285 @@
+/* src/components/Usuarios/UsuarioTable.css */
+
+.usuario-table__wrapper {
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 55vh; /* Slightly smaller to ensure last row visible */
+  border-radius: 12px;
+  border: 1px solid rgba(68, 39, 29, 0.08);
+  background: #FFFFFF;
+  box-shadow:
+    0 2px 8px rgba(68, 39, 29, 0.04),
+    0 1px 3px rgba(68, 39, 29, 0.03);
+  padding-bottom: 24px; /* Extra space for last row */
+}
+
+.usuario-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  min-width: 900px;
+}
+
+.usuario-table__th,
+.usuario-table__td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid rgba(68, 39, 29, 0.06);
+}
+
+.usuario-table__th {
+  background: #FFF8F0;
+  font-weight: 600;
+  color: #44271D;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.usuario-table__td {
+  color: #44271D;
+  vertical-align: middle;
+}
+
+.usuario-table__tr:hover .usuario-table__td {
+  background: rgba(215, 170, 112, 0.03);
+}
+
+.usuario-table__tr--inactivo .usuario-table__td {
+  opacity: 0.5;
+  color: #8B6B5A;
+}
+
+.usuario-table__tr--bloqueado .usuario-table__td {
+  background: #FEF2F2;
+}
+
+.usuario-table__tr--bloqueado:hover .usuario-table__td {
+  background: #FEE2E2;
+}
+
+.usuario-table__tr--pendiente .usuario-table__td {
+  background: #FFFDF0;
+}
+
+/* Código */
+.usuario-table__codigo {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.8rem;
+  background: #FFF8F0;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: #44271D;
+  border: 1px solid rgba(68, 39, 29, 0.1);
+}
+
+/* Username */
+.usuario-table__username-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.usuario-table__username {
+  font-weight: 500;
+  color: #44271D;
+}
+
+.usuario-table__badge-pass {
+  font-size: 0.9rem;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Trabajador */
+.usuario-table__trabajador-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.usuario-table__trabajador-nombre {
+  font-weight: 500;
+  color: #44271D;
+  font-size: 0.85rem;
+}
+
+.usuario-table__trabajador-codigo {
+  font-size: 0.7rem;
+  color: #8B6B5A;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+}
+
+.usuario-table__sin-trabajador {
+  color: #F57F17;
+  font-style: italic;
+  font-size: 0.85rem;
+}
+
+/* Rol Badge */
+.usuario-table__rol-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+/* Estado Badge */
+.usuario-table__estado-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+/* Fecha */
+.usuario-table__fecha {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.75rem;
+  color: #8B6B5A;
+  white-space: nowrap;
+}
+
+/* Acciones */
+.usuario-table__td--acciones {
+  white-space: nowrap;
+}
+
+.usuario-table__acciones {
+  display: inline-flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.usuario-table__btn {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.15s ease;
+  color: #8B6B5A;
+}
+
+.usuario-table__btn:hover {
+  background: rgba(68, 39, 29, 0.08);
+  transform: scale(1.1);
+}
+
+.usuario-table__btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #D7AA70;
+}
+
+.usuario-table__btn--activo {
+  background: #E8F5E9;
+  color: #2E7D32;
+}
+
+.usuario-table__btn--activo:hover {
+  background: #C8E6C9;
+}
+
+.usuario-table__btn--desbloquear {
+  background: #E3F2FD;
+  color: #1565C0;
+}
+
+.usuario-table__btn--desbloquear:hover {
+  background: #BBDEFB;
+  color: #0D47A1;
+}
+
+.usuario-table__btn--eliminar:hover {
+  background: #FDEDEC;
+  color: #C62828;
+}
+
+/* Vacío */
+.usuario-table__vacio {
+  padding: 60px 20px !important;
+}
+
+.usuario-table__vacio-contenido {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: #8B6B5A;
+}
+
+.usuario-table__vacio-contenido span {
+  font-size: 3rem;
+  opacity: 0.4;
+}
+
+.usuario-table__vacio-contenido p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .usuario-table {
+    min-width: 850px;
+  }
+
+  .usuario-table__th,
+  .usuario-table__td {
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .usuario-table__wrapper {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    margin: 0 -16px;
+  }
+
+  .usuario-table {
+    font-size: 0.8rem;
+  }
+
+  .usuario-table__th,
+  .usuario-table__td {
+    padding: 8px 10px;
+  }
+
+  .usuario-table__acciones {
+    gap: 4px;
+  }
+
+  .usuario-table__btn {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,525 @@
+/* src/components/Usuarios/RolManager.css */
+
+.rol-manager-overlay {
+  /* Hereda estilos de .usuario-modal__overlay */
+}
+
+.rol-manager-modal {
+  max-width: 900px;
+  width: 95%;
+  max-height: 95vh;
+  overflow-y: auto;
+}
+
+.rol-manager-modal.rol-manager--lista {
+  max-width: 700px;
+}
+
+/* ===== LISTA DE ROLES ===== */
+.rol-manager__lista {
+  padding: 8px 24px 24px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.rol-manager__rol-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(68, 39, 29, 0.1);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.rol-manager__rol-card:hover {
+  border-color: rgba(215, 170, 112, 0.3);
+  box-shadow: 0 4px 16px rgba(68, 39, 29, 0.08);
+}
+
+.rol-manager__rol-card--inactivo {
+  opacity: 0.6;
+  background: #FAF7F4;
+}
+
+.rol-manager__rol-card--sistema {
+  border-color: rgba(139, 107, 90, 0.3);
+  background: linear-gradient(90deg, #FFF8F0 0%, #FFFFFF 20%);
+}
+
+.rol-manager__rol-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+}
+
+.rol-manager__rol-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.rol-manager__rol-nombre-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.rol-manager__rol-nombre {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #44271D;
+}
+
+.rol-manager__rol-nivel {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+.rol-manager__badge-sistema {
+  font-size: 0.65rem;
+  padding: 2px 8px;
+  background: #E3F2FD;
+  color: #1565C0;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.rol-manager__badge-inactivo {
+  font-size: 0.65rem;
+  padding: 2px 8px;
+  background: #F5F5F5;
+  color: #757575;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.rol-manager__rol-descripcion {
+  margin: 0 0 8px;
+  font-size: 0.85rem;
+  color: #8B6B5A;
+  line-height: 1.4;
+}
+
+.rol-manager__rol-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.75rem;
+  color: #8B6B5A;
+}
+
+.rol-manager__rol-permisos {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.rol-manager__rol-codigo {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+}
+
+/* Acciones */
+.rol-manager__rol-acciones {
+  display: inline-flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.rol-manager__btn {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #8B6B5A;
+  transition: all 0.15s ease;
+}
+
+.rol-manager__btn:hover:not(:disabled) {
+  background: rgba(68, 39, 29, 0.08);
+  transform: scale(1.1);
+  color: #44271D;
+}
+
+.rol-manager__btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #D7AA70;
+}
+
+.rol-manager__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.rol-manager__btn--activar:hover:not(:disabled) {
+  background: #E8F5E9;
+  color: #2E7D32;
+}
+
+.rol-manager__btn--eliminar:hover:not(:disabled) {
+  background: #FDEDEC;
+  color: #C62828;
+}
+
+/* Preview de permisos */
+.rol-manager__rol-permisos-preview {
+  border-top: 1px solid rgba(68, 39, 29, 0.08);
+  background: #FAF7F4;
+}
+
+.rol-manager__rol-permisos-summary {
+  padding: 10px 16px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #8B6B5A;
+  cursor: pointer;
+  list-style: none;
+}
+
+.rol-manager__rol-permisos-summary::-webkit-details-marker {
+  display: none;
+}
+
+.rol-manager__rol-permisos-summary::before {
+  content: '▶';
+  display: inline-block;
+  margin-right: 8px;
+  font-size: 0.65rem;
+  transition: transform 0.2s ease;
+}
+
+.rol-manager__rol-permisos-preview[open] .rol-manager__rol-permisos-summary::before {
+  transform: rotate(90deg);
+}
+
+.rol-manager__rol-permisos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 8px;
+  padding: 0 16px 16px;
+}
+
+.rol-manager__rol-categoria-mini {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  background: #FFFFFF;
+  border: 1px solid rgba(68, 39, 29, 0.1);
+  border-radius: 8px;
+  font-size: 0.75rem;
+}
+
+.rol-manager__rol-categoria-nombre {
+  color: #44271D;
+  font-weight: 500;
+}
+
+.rol-manager__rol-categoria-count {
+  color: #8B6B5A;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+}
+
+/* ===== FOOTER LISTA ===== */
+.rol-manager__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-top: 1px solid rgba(68, 39, 29, 0.08);
+  background: #FAF7F4;
+  border-radius: 0 0 16px 16px;
+}
+
+.rol-manager__btn-nuevo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #44271D;
+  color: #FFFFFF;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(68, 39, 29, 0.25);
+  transition: all 0.15s ease;
+}
+
+.rol-manager__btn-nuevo:hover {
+  background: #2D1B15;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(68, 39, 29, 0.3);
+}
+
+.rol-manager__btn-nuevo:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(215, 170, 112, 0.4);
+}
+
+/* ===== FORMULARIO EDICIÓN ===== */
+.rol-manager-modal .usuario-modal__form {
+  padding: 24px;
+}
+
+/* Permisos section */
+.rol-manager__permisos {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(68, 39, 29, 0.08);
+}
+
+.rol-manager__permisos-titulo {
+  margin: 0 0 4px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #44271D;
+  position: sticky;
+  top: 0;
+  background: #FFFFFF;
+  padding-bottom: 8px;
+  z-index: 1;
+}
+
+.rol-manager__permisos-ayuda {
+  margin: 0 0 16px;
+  font-size: 0.8rem;
+  color: #8B6B5A;
+  line-height: 1.5;
+}
+
+.rol-manager__categoria {
+  background: #FAF7F4;
+  border: 1px solid rgba(68, 39, 29, 0.08);
+  border-radius: 10px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.rol-manager__categoria summary {
+  list-style: none;
+}
+
+.rol-manager__categoria summary::-webkit-details-marker {
+  display: none;
+}
+
+.rol-manager__categoria-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #44271D;
+}
+
+.rol-manager__categoria-header::before {
+  content: '▼';
+  font-size: 0.7rem;
+  color: #8B6B5A;
+  transition: transform 0.2s ease;
+}
+
+.rol-manager__categoria:not([open]) .rol-manager__categoria-header::before {
+  transform: rotate(-90deg);
+}
+
+.rol-manager__categoria-nombre {
+  text-transform: capitalize;
+}
+
+.rol-manager__categoria-toggle {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.rol-manager__categoria-toggle input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.rol-manager__toggle-slider {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background: #E0E0E0;
+  border-radius: 12px;
+  transition: background 0.2s ease;
+}
+
+.rol-manager__toggle-slider::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+
+.rol-manager__categoria-toggle input:checked ~ .rol-manager__toggle-slider {
+  background: #D7AA70;
+}
+
+.rol-manager__categoria-toggle input:checked ~ .rol-manager__toggle-slider::after {
+  transform: translateX(20px);
+}
+
+.rol-manager__categoria-toggle input:indeterminate ~ .rol-manager__toggle-slider {
+  background: #FFD54F;
+}
+
+.rol-manager__categoria-toggle input:focus-visible ~ .rol-manager__toggle-slider {
+  box-shadow: 0 0 0 2px #D7AA70;
+}
+
+/* Grid de permisos */
+.rol-manager__permisos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 8px;
+  padding: 0 16px 16px;
+}
+
+.rol-manager__permiso {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  background: #FFFFFF;
+  border: 1px solid rgba(68, 39, 29, 0.08);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.rol-manager__permiso:hover {
+  border-color: rgba(215, 170, 112, 0.3);
+  background: #FFFDF8;
+}
+
+.rol-manager__permiso input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: #D7AA70;
+  cursor: pointer;
+}
+
+.rol-manager__permiso-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.rol-manager__permiso-nombre {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #44271D;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rol-manager__permiso-desc {
+  font-size: 0.7rem;
+  color: #8B6B5A;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Confirm overlay */
+.rol-manager__confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(68, 39, 29, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1001;
+  animation: fadeIn 0.2s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .rol-manager-modal {
+    max-height: 100vh;
+    border-radius: 16px 16px 0 0;
+    max-width: 100%;
+    height: 100%;
+  }
+
+  .rol-manager-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .rol-manager__lista {
+    padding: 8px 16px 16px;
+  }
+
+  .rol-manager__rol-header {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .rol-manager__rol-acciones {
+    align-self: flex-end;
+  }
+
+  .rol-manager__rol-permisos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rol-manager__permisos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rol-manager__footer {
+    flex-direction: column-reverse;
+    gap: 12px;
+  }
+
+  .rol-manager__btn-nuevo {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .rol-manager__categoria-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
