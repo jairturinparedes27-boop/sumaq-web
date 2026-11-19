@@ -15,6 +15,7 @@ import Productos from './pages/Productos/Productos'
 import Insumos from './pages/Insumos/Insumos'
 import Trabajadores from './pages/Trabajadores/Trabajadores'
 import Reportes from './pages/Reportes/Reportes'
+import Usuarios from './pages/Usuarios/Usuarios'
 
 import './App.css'
 
@@ -34,6 +35,7 @@ function App() {
         <Route path="/insumos" element={<Insumos />} />
         <Route path="/trabajadores" element={<Trabajadores />} />
         <Route path="/reportes" element={<Reportes />} />
+        <Route path="/usuarios" element={<Usuarios />} />
 
         {/* Catch-all: redirigir a login */}
         <Route path="*" element={<Navigate to="/" replace />} />

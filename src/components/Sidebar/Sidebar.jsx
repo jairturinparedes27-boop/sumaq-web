@@ -14,7 +14,8 @@ function Sidebar({ abierto, onCerrar }) {
     { id: 'productos', label: 'Productos', icon: '▣', to: '/productos' },
     { id: 'insumos', label: 'Insumos', icon: '▧', to: '/insumos' },
     { id: 'trabajadores', label: 'Trabajadores', icon: '♙', to: '/trabajadores' },
-    { id: 'reportes', label: 'Reportes', icon: '▥', to: '/reportes' }
+    { id: 'reportes', label: 'Reportes', icon: '▥', to: '/reportes' },
+    { id: 'usuarios', label: 'Usuarios', icon: '👥', to: '/usuarios' }
   ]
 
   const manejarClick = (item) => {
